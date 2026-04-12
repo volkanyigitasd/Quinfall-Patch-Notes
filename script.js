@@ -3,12 +3,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const contentBody = document.getElementById('content-body');
     const patchTitle = document.getElementById('patch-title');
     const patchHero = document.getElementById('patch-hero');
-    const navSubtitle = document.getElementById('navSubtitle');
+    const versionBadge = document.getElementById('version-badge');
+    const patchDate = document.getElementById('patch-date');
+    const versionListEl = document.getElementById('version-list');
     
-    // Fallback to TR if not saved
+    // State
     let currentLang = localStorage.getItem('quinfall_lang') || 'tr';
+    let currentVersionId = patchList[0].id; // default to latest
     
     // Initialize
+    renderSidebar();
     setLanguage(currentLang);
 
     // Event Listeners for language buttons
@@ -20,6 +24,40 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    function renderSidebar() {
+        versionListEl.innerHTML = '';
+        patchList.forEach(patch => {
+            const li = document.createElement('li');
+            li.className = 'version-btn';
+            if (patch.id === currentVersionId) li.classList.add('active');
+            
+            li.innerHTML = `
+                <span>Patch ${patch.versionBadge}</span>
+                <span class="version-tag">${patch.id}</span>
+            `;
+            
+            li.addEventListener('click', () => {
+                if (currentVersionId !== patch.id) {
+                    currentVersionId = patch.id;
+                    updateSidebarState();
+                    transitionContent();
+                }
+            });
+            versionListEl.appendChild(li);
+        });
+    }
+
+    function updateSidebarState() {
+        const items = versionListEl.querySelectorAll('.version-btn');
+        items.forEach((item, index) => {
+            if (patchList[index].id === currentVersionId) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+        });
+    }
 
     function setLanguage(lang) {
         currentLang = lang;
@@ -34,27 +72,34 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Add a fade out transition
+        transitionContent();
+    }
+
+    function transitionContent() {
         contentBody.style.opacity = '0';
         patchHero.style.opacity = '0';
         
         setTimeout(() => {
-            renderContent(lang);
-            // Fade back in
+            renderContent();
             contentBody.style.opacity = '1';
             patchHero.style.opacity = '1';
         }, 300);
     }
 
-    function renderContent(lang) {
-        const data = patchData[lang];
+    function renderContent() {
+        const patchDef = patchList.find(p => p.id === currentVersionId);
+        if (!patchDef) return;
+
+        const data = patchDef.data[currentLang];
         if (!data) return;
 
-        // Set static UI elements (Optional: if we want to change logo subtitle)
-        // Set Header details
         patchTitle.textContent = data.title;
+        versionBadge.textContent = patchDef.versionBadge;
+        patchDate.textContent = patchDef.date;
         
-        // Assemble HTML from JS data instead of huge string, for better modularity
+        // Translate sidebar title dynamically
+        document.getElementById('sidebar-title').textContent = currentLang === 'tr' ? 'Yama Geçmişi' : 'Update History';
+        
         let html = '';
         
         // Intro
