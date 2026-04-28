@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quinfall - FPS Solutions</title>
+    <!-- Modern Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Premium Background Effects -->
+    <div class="background-effects">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
+        <div class="noise-overlay"></div>
+    </div>
+
+    <!-- Top Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-q">Q</span>
+                <div class="logo-text">
+                    <h1>QUINFALL</h1>
+                    <span class="subtitle" id="nav-subtitle" data-tr="Yardım Merkezi" data-en="Help Center">Help Center</span>
+                </div>
+            </div>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link" data-tr="Yama Notları" data-en="Patch Notes">Patch Notes</a>
+                <a href="fps.html" class="nav-link active" data-tr="FPS Çözümleri" data-en="FPS Solutions">FPS Solutions</a>
+            </div>
+
+            <div class="lang-selector">
+                <button class="lang-btn active" data-lang="tr">Türkçe</button>
+                <button class="lang-btn" data-lang="en">English</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container" style="max-width: 1000px; margin: 3rem auto;">
+        <div class="patch-container">
+            <!-- Header Section (Dynamic) -->
+            <div class="patch-hero" style="padding: 4rem 3rem 3rem;">
+                <div class="version-badge" data-tr="Performans Rehberi" data-en="Performance Guide">Performans Rehberi</div>
+                <h1 class="patch-title" data-tr="Düşük FPS Sorunlarına Çözüm" data-en="Low FPS Solutions">Düşük FPS Sorunlarına Çözüm</h1>
+                <p class="patch-date" data-tr="İşlemci ve Ekran Kartı Optimizasyonları" data-en="CPU and GPU Optimizations">İşlemci ve Ekran Kartı Optimizasyonları</p>
+            </div>
+
+            <!-- Content renders here -->
+            <div class="content-body">
+                
+                <div class="intro-text" data-tr="Oyunda yaşadığınız düşük FPS, anlık takılma (stuttering) ve performans düşüklüklerini gidermek için donanımınıza özel aşağıdaki adımları uygulayabilirsiniz." data-en="You can apply the hardware-specific steps below to resolve low FPS, stuttering, and performance drops you experience in the game.">
+                    Oyunda yaşadığınız düşük FPS, anlık takılma (stuttering) ve performans düşüklüklerini gidermek için donanımınıza özel aşağıdaki adımları uygulayabilirsiniz.
+                </div>
+
+                <h2 class="section-title"><i class="fas fa-microchip"></i> <span data-tr="İşlemci (CPU) Çözümleri" data-en="Processor (CPU) Solutions">İşlemci (CPU) Çözümleri</span></h2>
+
+                <!-- Intel CPU -->
+                <div class="class-block">
+                    <div class="class-header">
+                        <div class="class-icon" style="color: #0071c5; border-color: rgba(0, 113, 197, 0.4); background: rgba(0, 113, 197, 0.1);"><i class="fas fa-server"></i></div>
+                        <h3>Intel İşlemciler</h3>
+                    </div>
+                    <div class="class-intro">
+                        <p data-tr="Özellikle 12., 13. ve 14. Nesil Intel işlemcilerde bulunan P-Core (Performans) ve E-Core (Verimlilik) yapısı, oyunlarda anlık takılmalara sebep olabilir." data-en="Especially on 12th, 13th, and 14th Gen Intel processors, the P-Core and E-Core architecture can cause stuttering in games."></p>
+                    </div>
+                    <ul class="changes-list">
+                        <li><span class="skill-name" data-tr="E-Cores Kapatma:" data-en="Disabling E-Cores:"></span> <span data-tr="BIOS üzerinden E-Core'ları (Efficiency Cores) geçici olarak kapatarak oyunun sadece Performans çekirdeklerinde çalışmasını sağlayabilirsiniz. Bu, anlık FPS düşüşlerini ciddi oranda engeller." data-en="By temporarily disabling E-Cores in the BIOS, you can force the game to run only on Performance cores. This significantly reduces stuttering."></span></li>
+                        <li><span class="skill-name" data-tr="Legacy Game Compatibility Mode:" data-en="Legacy Game Compatibility Mode:"></span> <span data-tr="BIOS'ta bu ayarı aktif ederek klavyenizdeki Scroll Lock tuşuyla E-Core'ları oyun oynarken tek tuşla devre dışı bırakabilirsiniz." data-en="By activating this setting in the BIOS, you can disable E-Cores with a single press of the Scroll Lock key while playing."></span></li>
+                        <li><span class="skill-name" data-tr="Güç Yönetimi:" data-en="Power Management:"></span> <span data-tr="Windows Güç Seçeneklerinden kesinlikle 'Yüksek Performans' veya 'Nihai Performans' modunu seçin." data-en="Make sure to select 'High Performance' or 'Ultimate Performance' mode in Windows Power Options."></span></li>
+                    </ul>
+                </div>
+
+                <!-- AMD CPU -->
+                <div class="class-block">
+                    <div class="class-header">
+                        <div class="class-icon" style="color: #ed1c24; border-color: rgba(237, 28, 36, 0.4); background: rgba(237, 28, 36, 0.1);"><i class="fas fa-microchip"></i></div>
+                        <h3>AMD İşlemciler</h3>
+                    </div>
+                    <div class="class-intro">
+                        <p data-tr="Ryzen işlemcilerde Thread yapısı ve güç yönetim profilleri FPS'i doğrudan etkilemektedir." data-en="On Ryzen processors, thread structure and power profiles directly impact FPS."></p>
+                    </div>
+                    <ul class="changes-list">
+                        <li><span class="skill-name" data-tr="SMT (Simultaneous Multithreading) Kapatma:" data-en="Disabling SMT:"></span> <span data-tr="Bazı oyun motorları sanal çekirdekleri sevmez. BIOS üzerinden SMT'yi kapatmak sadece fiziksel çekirdeklerin kullanılmasını sağlayarak %10-15 arası FPS artışı sağlayabilir." data-en="Some game engines don't perform well with virtual cores. Disabling SMT in BIOS ensures only physical cores are used, potentially increasing FPS by 10-15%."></span></li>
+                        <li><span class="skill-name" data-tr="Ryzen Master Oyun Modu:" data-en="Ryzen Master Game Mode:"></span> <span data-tr="AMD Ryzen Master yazılımı üzerinden 'Game Mode' profilini seçerek işlemcinizi oyun için optimize edebilirsiniz." data-en="You can optimize your processor for gaming by selecting the 'Game Mode' profile in the AMD Ryzen Master software."></span></li>
+                        <li><span class="skill-name" data-tr="PBO (Precision Boost Overdrive):" data-en="PBO Optimization:"></span> <span data-tr="Soğutmanız iyiyse BIOS üzerinden PBO'yu 'Enabled' konumuna getirerek işlemcinin daha yüksek frekanslara çıkmasına izin verin." data-en="If your cooling is sufficient, set PBO to 'Enabled' in BIOS to allow the processor to reach higher frequencies."></span></li>
+                    </ul>
+                </div>
+
+                <h2 class="section-title"><i class="fas fa-video"></i> <span data-tr="Ekran Kartı (GPU) Çözümleri" data-en="Graphics Card (GPU) Solutions">Ekran Kartı (GPU) Çözümleri</span></h2>
+
+                <!-- NVIDIA GPU -->
+                <div class="class-block">
+                    <div class="class-header">
+                        <div class="class-icon" style="color: #76b900; border-color: rgba(118, 185, 0, 0.4); background: rgba(118, 185, 0, 0.1);"><i class="fas fa-desktop"></i></div>
+                        <h3>NVIDIA Ekran Kartları</h3>
+                    </div>
+                    <ul class="changes-list">
+                        <li><span class="skill-name" data-tr="Güç Yönetimi Modu:" data-en="Power Management Mode:"></span> <span data-tr="NVIDIA Denetim Masası > 3D Ayarlarının Yönetilmesi kısmından güç yönetimini 'Maksimum performansı tercih et' olarak ayarlayın." data-en="Set power management to 'Prefer maximum performance' in NVIDIA Control Panel > Manage 3D Settings."></span></li>
+                        <li><span class="skill-name" data-tr="Düşük Gecikme Oranı Modu:" data-en="Low Latency Mode:"></span> <span data-tr="Bu ayarı 'Ultra' veya 'Açık' olarak değiştirerek input lag'i (giriş gecikmesi) azaltın." data-en="Change this setting to 'Ultra' or 'On' to reduce input lag."></span></li>
+                        <li><span class="skill-name" data-tr="Gölgelendirici Önbelleği Boyutu:" data-en="Shader Cache Size:"></span> <span data-tr="Bu ayarı '10 GB' veya 'Limitsiz' yaparak anlık takılmaların önüne geçin." data-en="Set this to '10 GB' or 'Unlimited' to prevent stuttering while loading new areas."></span></li>
+                        <li><span class="skill-name" data-tr="Doku Filtreleme - Kalite:" data-en="Texture Filtering - Quality:"></span> <span data-tr="Bu ayarı 'Yüksek Performans' olarak değiştirerek ekstra FPS kazanın." data-en="Change this to 'High Performance' to gain extra FPS."></span></li>
+                    </ul>
+                </div>
+
+                <!-- AMD GPU -->
+                <div class="class-block">
+                    <div class="class-header">
+                        <div class="class-icon" style="color: #ed1c24; border-color: rgba(237, 28, 36, 0.4); background: rgba(237, 28, 36, 0.1);"><i class="fas fa-desktop"></i></div>
+                        <h3>AMD Radeon Ekran Kartları</h3>
+                    </div>
+                    <ul class="changes-list">
+                        <li><span class="skill-name" data-tr="Radeon Anti-Lag:" data-en="Radeon Anti-Lag:"></span> <span data-tr="AMD Adrenalin yazılımı üzerinden Anti-Lag özelliğini aktif ederek tepkime süresini iyileştirin." data-en="Enable the Anti-Lag feature via AMD Adrenalin software to improve response times."></span></li>
+                        <li><span class="skill-name" data-tr="Radeon Boost:" data-en="Radeon Boost:"></span> <span data-tr="Görüntü kalitesini anlık düşürüp FPS artırır ancak takılmalara sebep oluyorsa KAPATIN." data-en="Dynamically lowers resolution to increase FPS during fast movement, but DISABLE IT if it causes stuttering."></span></li>
+                        <li><span class="skill-name" data-tr="Yüzey Biçim Optimizasyonu:" data-en="Surface Format Optimization:"></span> <span data-tr="Bu ayarı aktif ederek küçük bir performans artışı elde edebilirsiniz." data-en="Enable this setting to gain a minor performance boost."></span></li>
+                        <li><span class="skill-name" data-tr="Doku Filtreleme Kalitesi:" data-en="Texture Filtering Quality:"></span> <span data-tr="'Performans' olarak ayarlayın." data-en="Set this to 'Performance'."></span></li>
+                    </ul>
+                </div>
+
+                <div class="dev-note" style="margin-top: 3rem;">
+                    <i class="fas fa-info-circle"></i>
+                    <div>
+                        <span class="dev-note-title" data-tr="Ekstra Not" data-en="Extra Note">Ekstra Not</span>
+                        <p data-tr="Oyunu mutlaka SSD veya NVMe disk üzerine kurun. HDD kullanmak Quinfall gibi devasa açık dünya oyunlarında kaplamaların geç yüklenmesine ve ciddi FPS düşüşlerine sebep olur." data-en="Make sure to install the game on an SSD or NVMe drive. Using an HDD will cause slow texture loading and severe FPS drops in massive open-world games like Quinfall."></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Quinfall. <span id="footer-rights" data-tr="Tüm hakları saklıdır." data-en="All rights reserved.">Tüm hakları saklıdır.</span></p>
+        </div>
+    </footer>
+
+    <!-- Script for language toggle on static page -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const langBtns = document.querySelectorAll('.lang-btn');
+            
+            // State
+            let currentLang = localStorage.getItem('quinfall_lang') || 'tr';
+            
+            // Initialize
+            setLanguage(currentLang);
+
+            // Event Listeners for language buttons
+            langBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const selectedLang = e.target.getAttribute('data-lang');
+                    if (selectedLang !== currentLang) {
+                        setLanguage(selectedLang);
+                    }
+                });
+            });
+
+            function setLanguage(lang) {
+                currentLang = lang;
+                localStorage.setItem('quinfall_lang', lang);
+
+                // Update active button state
+                langBtns.forEach(btn => {
+                    if (btn.getAttribute('data-lang') === lang) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+
+                // Update text contents
+                const translatableElements = document.querySelectorAll('[data-tr]');
+                translatableElements.forEach(el => {
+                    if (lang === 'tr') {
+                        el.textContent = el.getAttribute('data-tr');
+                    } else if (lang === 'en') {
+                        el.textContent = el.getAttribute('data-en');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

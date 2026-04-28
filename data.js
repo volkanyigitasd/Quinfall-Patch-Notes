@@ -1,5 +1,192 @@
 const patchList = [
     {
+        id: '0.25',
+        versionBadge: 'v1.0.0.25',
+        date: '19 April 2026',
+        data: {
+            en: {
+                title: "The Quinfall - Patch v1.0.0.25",
+                intro: "This patch focuses on targeted bug fixes, class-specific adjustments, and quality-of-life improvements based on community feedback.<br><br>We've addressed several issues caused by the free-form melee movement system, corrected various combat and UI bugs, and introduced new features including Power Stone tiers and a custom referral nickname system.<br><br>Additionally, Combat Zone rewards have been significantly increased to better align with player expectations.",
+                ui: {
+                    devNoteTitle: "Dev Note",
+                    devCommentaryTitle: "Developer Commentary"
+                },
+                sections: [
+                    {
+                        sectionTitle: "Class Balance",
+                        icon: "fas fa-balance-scale",
+                        blocks: [
+                            {
+                                title: "Crossbow",
+                                icon: "fas fa-crosshairs",
+                                intro: "Since Crossbow usage has declined after the last update, this adjustment is intended as a targeted buff to improve its overall effectiveness:",
+                                changes: [
+                                    { name: "Steel Trap:", detail: "Now triggers instantly without delay, slows the target by 90% for 1.5 seconds, and its projectile speed has been increased by 50%." },
+                                    { name: "Stun Bomb:", detail: "Base damage increased from 200% to 240%." },
+                                    { name: "Ballista:", detail: "Range has been increased by 20%." }
+                                ],
+                                devNote: "Since Crossbow usage has declined after the last update, this adjustment is intended as a targeted buff to improve its overall effectiveness. Steel Trap has been enhanced to make the weapon more competitive in combat. Along with this change, Ballista has also been improved to further support its viability in combat."
+                            },
+                            {
+                                title: "Warhammer",
+                                icon: "fas fa-hammer",
+                                intro: "Collision fixes for Warhammer barrier abilities:",
+                                changes: [
+                                    { name: "Stonewall:", detail: "Fixed an issue where ranged attacks could pass through the wall. The wall now properly blocks incoming ranged attacks as intended." },
+                                    { name: "Stone Arena:", detail: "Fixed an issue where ranged attacks could pass through the wall. The wall now properly blocks incoming ranged attacks as intended." }
+                                ],
+                                devNote: "These fixes address collision issues where ranged projectiles were incorrectly able to pass through the Warhammer barriers. Both walls now properly block incoming ranged attacks as intended."
+                            },
+                            {
+                                title: "Dual Dagger",
+                                icon: "fas fa-khanda",
+                                intro: "",
+                                changes: [
+                                    { name: "Blindside:", detail: "Now prevents the character from taking damage during its usage. It now works as intended." }
+                                ]
+                            },
+                            {
+                                title: "Two-Hand Sword",
+                                icon: "fas fa-gavel",
+                                intro: "",
+                                changes: [
+                                    { name: "Frenzy:", detail: "Fixed an issue where Frenzy would not trigger its cooldown in some cases. It now works as intended." }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        sectionTitle: "Bug Fixes",
+                        icon: "fas fa-bug",
+                        listInfo: [
+                            { title: "Kraken size has been increased.", desc: "An issue where its damage-over-time effect could leave players at 1 HP has been fixed. This change also addresses an unintended strategy where players could surround the Kraken to zone others out, creating an unfair advantage in encounters." },
+                            { title: "Fixed an issue where certain skills were being canceled during movement-based auto attacks.", desc: "This was one of the bugs caused by the free-form melee movement system. When players performed auto attacks while moving, certain skills could unintentionally get canceled. Adjustments have been made to ensure smoother combat flow." },
+                            { title: "Fixed a bug that prevented players from assisting characters who died while sprinting with the Q key.", desc: "This unintended behavior has been corrected, and reviving now properly follows normal combat rules." },
+                            { title: "Fixed an issue where enemy players were not affected by CC effects in some cases.", desc: "This issue was related to the free-form melee movement system, where desync or timing inconsistencies could sometimes prevent CC effects from applying correctly. The behavior has been fixed for more consistent combat interactions." },
+                            { title: "Fixed a visual bug where the Silver Wheel of Fortune list would sometimes appear invisible.", desc: "This was a UI-related issue where the Silver Wheel of Fortune rewards list would fail to render properly in certain cases. The display issue has been fixed." },
+                            { title: "Fixed an issue where excess EXP was not carried over to the next level upon leveling up Profession EXP and Clan EXP.", desc: "Previously, any excess EXP gained during level-ups for Profession and Clan EXP was not being carried over correctly. This has now been fixed so overflow EXP is properly applied to the next level." },
+                            { title: "Fixed an issue where materials refunded after canceling high-cost crafting could become unusable.", desc: "In some cases, refunded materials would return in a broken state and couldn't be used again. This has been resolved." }
+                        ]
+                    },
+                    {
+                        sectionTitle: "General Updates",
+                        icon: "fas fa-list-ul",
+                        listInfo: [
+                            { title: "New accounts now receive a 1-week 50% EXP Boost.", desc: "This change is aimed at helping new players progress faster during their early game experience, making it easier to catch up and integrate into the game world." },
+                            { title: "Central Market storage protection added.", desc: "To prevent item loss when the Central Market storage is full, placing new sell orders is now restricted. Sufficient space in the market storage is required for both buy and sell orders." },
+                            { title: "Clan war rewards have been increased.", desc: "The amount of coins awarded for 1st place has been increased to 20B, and additionally boss chests have been added as rewards. The 1st place will receive 100 of them. Rewards for the other rankings will also be increased gradually." },
+                            { title: "A custom nickname system has been added to the referral system.", desc: "Players can now set a referral nickname of their own choice and share it with new players instead of a referral ID. It is a customizable system that works the same as the referral ID system." },
+                            { title: "New tiers have been added to Power Stones.", desc: "The current power stones will be marked as Level 1, and new Level 2 and Level 3 power stones have been added. Level 2 and Level 3 stones can be obtained by combining Level 1 stones via crafting stations. These stones provide more powerful bonuses." },
+                            { title: "Variant 1 Silver Wheel of Fortune has been adjusted.", desc: "Since the introduction of Variant 2, the popularity of Variant 1 has declined. An update has been made along with an adjusted silver cost of 15M." },
+                            { title: "The score gained from healing effects in Arena battles has been reduced by half.", desc: "An issue was identified where healers could gain an unfair advantage by healing players at full health to farm score. To ensure a more balanced and competitive environment, the score gained from healing has been reduced." }
+                        ]
+                    },
+                    {
+                        sectionTitle: "Combat Zone Updates",
+                        icon: "fas fa-skull-crossbones",
+                        listInfo: [
+                            { title: "The drop chance of Tera Shards from mobs has been doubled.", desc: "Based on feedback from our players, we've decided to increase the drop rate of Tera Shards to improve overall accessibility and progression." },
+                            { title: "PVP score gain has been increased from 3x to 4x.", desc: "Based on feedback from our players, we are increasing the PVP score gained in the Combat Zone to make it more rewarding and engaging." },
+                            { title: "PVE rewards from mobs have been increased from 1k to 3k.", desc: "Based on feedback from our players, we are increasing the PVE score gained in the Combat Zone to make it more rewarding and engaging." },
+                            { title: "The drop chance of Blueprint fragments from mobs has been doubled.", desc: "Based on feedback from our players, we've increased the drop chance of Blueprint fragments from mobs in the Combat Zone to improve progression and overall rewards." },
+                            { title: "Blueprint fragment rewards from the Vorgath World Boss have been increased from 1 to 5.", desc: "Based on player feedback, we've significantly increased the Blueprint fragment rewards from the Vorgath World Boss to make the encounter more rewarding and worth the effort." }
+                        ]
+                    }
+                ]
+            },
+            tr: {
+                title: "The Quinfall - Yama v1.0.0.25",
+                intro: "Bu yama; topluluk geri bildirimlerine dayanan hedefli hata düzeltmeleri, sınıf bazlı ayarlamalar ve yaşam kalitesi iyileştirmelerine odaklanmaktadır.<br><br>Serbest hareketli yakın dövüş sistemi kaynaklı birçok sorunu giderdik, çeşitli savaş ve arayüz hatalarını düzelttik. Güç Taşı kademeleri ve özel referans takma adı sistemi gibi yeni özellikler ekledik.<br><br>Ayrıca, oyuncu beklentileriyle daha iyi uyum sağlaması için Savaş Bölgesi ödülleri önemli ölçüde artırıldı.",
+                ui: {
+                    devNoteTitle: "Geliştirici Notu",
+                    devCommentaryTitle: "Geliştiricinin Yorumu"
+                },
+                sections: [
+                    {
+                        sectionTitle: "Sınıf Dengelemeleri",
+                        icon: "fas fa-balance-scale",
+                        blocks: [
+                            {
+                                title: "Arbalet (Crossbow)",
+                                icon: "fas fa-crosshairs",
+                                intro: "Son güncellemeden sonra Arbalet kullanımı düştüğü için, genel etkinliğini artırmaya yönelik hedefli bir güçlendirme yapıldı:",
+                                changes: [
+                                    { name: "Çelik Kapan (Steel Trap):", detail: "Artık gecikmesiz olarak anında tetikleniyor, hedefi 1.5 saniyeliğine %90 yavaşlatıyor ve mermi hızı %50 artırıldı." },
+                                    { name: "Sersemletme Bombası (Stun Bomb):", detail: "Temel hasar %200'den %240'a yükseltildi." },
+                                    { name: "Balista (Ballista):", detail: "Menzili %20 artırıldı." }
+                                ],
+                                devNote: "Son güncellemeden sonra Arbalet kullanımı düştüğü için, bu ayarlama genel etkinliğini artırmaya yönelik hedefli bir güçlendirmedir. Çelik Kapan, silahı savaşta daha rekabetçi hale getirmek için güçlendirildi. Balista da savaştaki etkinliğini desteklemek için iyileştirildi."
+                            },
+                            {
+                                title: "Savaş Çekici (Warhammer)",
+                                icon: "fas fa-hammer",
+                                intro: "Savaş Çekici bariyer yetenekleri için çarpışma düzeltmeleri:",
+                                changes: [
+                                    { name: "Taş Duvar (Stonewall):", detail: "Menzilli saldırıların duvardan geçebildiği bir sorun düzeltildi. Duvar artık gelen menzilli saldırıları doğru şekilde engelliyor." },
+                                    { name: "Taş Arena (Stone Arena):", detail: "Menzilli saldırıların duvardan geçebildiği bir sorun düzeltildi. Duvar artık gelen menzilli saldırıları doğru şekilde engelliyor." }
+                                ],
+                                devNote: "Bu düzeltmeler, menzilli mermilerin Savaş Çekici bariyerlerinden yanlışlıkla geçebildiği çarpışma sorunlarını giderir. Her iki duvar da artık gelen menzilli saldırıları düzgün şekilde engelliyor."
+                            },
+                            {
+                                title: "Çift Hançer (Dual Dagger)",
+                                icon: "fas fa-khanda",
+                                intro: "",
+                                changes: [
+                                    { name: "Blindside:", detail: "Artık kullanım sırasında karakterin hasar almasını engelliyor. Artık amaçlandığı gibi çalışıyor." }
+                                ]
+                            },
+                            {
+                                title: "Çift Elli Kılıç (Two-Hand Sword)",
+                                icon: "fas fa-gavel",
+                                intro: "",
+                                changes: [
+                                    { name: "Cinnet (Frenzy):", detail: "Bazı durumlarda bekleme süresinin tetiklenmediği bir sorun düzeltildi. Artık amaçlandığı gibi çalışıyor." }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        sectionTitle: "Hata Düzeltmeleri",
+                        icon: "fas fa-bug",
+                        listInfo: [
+                            { title: "Kraken boyutu artırıldı.", desc: "Sürekli hasar etkisinin oyuncuları 1 HP'de bırakabildiği bir sorun düzeltildi. Bu değişiklik ayrıca oyuncuların Kraken'i çevreleyerek diğerlerini engellemesine neden olan istenmeyen bir stratejiyi de çözüyor." },
+                            { title: "Hareket halindeki otomatik saldırılar sırasında bazı yeteneklerin iptal edildiği bir sorun düzeltildi.", desc: "Bu, serbest hareketli yakın dövüş sistemi kaynaklı hatalardan biriydi. Oyuncular hareket halindeyken otomatik saldırı yaptığında bazı yetenekler istemeden iptal olabiliyordu. Daha akıcı savaş akışı sağlamak için ayarlamalar yapıldı." },
+                            { title: "Q tuşuyla koşarken ölen karakterlere yardım edilememesine neden olan bir hata düzeltildi.", desc: "Bu istenmeyen davranış düzeltildi ve diriltme artık normal savaş kurallarına uygun şekilde çalışıyor." },
+                            { title: "Bazı durumlarda düşman oyuncuların CC etkilerinden etkilenmediği bir sorun düzeltildi.", desc: "Bu sorun, serbest hareketli yakın dövüş sistemiyle ilgiliydi. Eşzamanlama tutarsızlıkları bazen CC etkilerinin doğru uygulanmasını engelleyebiliyordu. Daha tutarlı savaş etkileşimleri için davranış düzeltildi." },
+                            { title: "Gümüş Şans Çarkı listesinin bazen görünmez olduğu bir görsel hata düzeltildi.", desc: "Bu, Gümüş Şans Çarkı ödül listesinin bazı durumlarda düzgün görüntülenmediği arayüzle ilgili bir sorundu. Görüntüleme hatası düzeltildi." },
+                            { title: "Meslek EXP ve Klan EXP seviye atlarken fazla EXP'nin bir sonraki seviyeye aktarılmadığı bir sorun düzeltildi.", desc: "Daha önce, seviye atlama sırasında kazanılan fazla EXP doğru şekilde aktarılmıyordu. Bu artık düzeltildi ve taşan EXP bir sonraki seviyeye düzgün şekilde uygulanıyor." },
+                            { title: "Yüksek maliyetli üretim iptali sonrası iade edilen malzemelerin bazı durumlarda kullanılamaz hale geldiği bir sorun düzeltildi.", desc: "Bazı durumlarda iade edilen malzemeler bozuk durumda geri dönüyor ve tekrar kullanılamıyordu. Bu sorun çözüldü." }
+                        ]
+                    },
+                    {
+                        sectionTitle: "Genel Güncellemeler",
+                        icon: "fas fa-list-ul",
+                        listInfo: [
+                            { title: "Yeni hesaplar artık 1 haftalık %50 EXP Artışı alıyor.", desc: "Bu değişiklik, yeni oyuncuların erken oyun deneyimlerinde daha hızlı ilerlemelerine yardımcı olmayı amaçlıyor ve oyun dünyasına daha kolay entegre olmalarını sağlıyor." },
+                            { title: "Merkez Market depolama koruması eklendi.", desc: "Market deposu dolduğunda eşya kaybını önlemek için yeni satış emirleri kısıtlandı. Hem alış hem satış emirleri için yeterli depolama alanı gerekli." },
+                            { title: "Klan savaşı ödülleri artırıldı.", desc: "1. sıra için verilen altın miktarı 20B'ye yükseltildi, ayrıca boss sandıkları ödül olarak eklendi. 1. sıra 100 adet alacak. Diğer sıralamalar için ödüller de kademeli olarak artırılacak." },
+                            { title: "Referans sistemine özel takma ad sistemi eklendi.", desc: "Oyuncular artık kendi seçtikleri bir referans takma adı belirleyebilir ve bunu yeni oyuncularla referans ID yerine paylaşabilir. Referans ID sistemiyle aynı şekilde çalışan özelleştirilebilir bir sistem." },
+                            { title: "Güç Taşlarına yeni kademeler eklendi.", desc: "Mevcut güç taşları Seviye 1 olarak işaretlenecek, yeni Seviye 2 ve Seviye 3 güç taşları eklendi. Seviye 2 ve 3 taşları, Seviye 1 taşlarını üretim istasyonlarında birleştirerek elde edilebilir. Bu taşlar daha güçlü bonuslar sağlar." },
+                            { title: "Varyant 1 Gümüş Şans Çarkı güncellendi.", desc: "Varyant 2'nin tanıtılmasından bu yana Varyant 1'in popülerliği düştü. Güncel ilerlemeyle uyumlu hale getirmek için güncelleme yapıldı ve gümüş maliyeti 15M olarak ayarlandı." },
+                            { title: "Arena savaşlarında iyileştirme etkilerinden kazanılan puan yarıya indirildi.", desc: "İyileştiricilerin tam canlı oyuncuları iyileştirerek puan kasabildiği bir sorun tespit edildi. Daha dengeli ve rekabetçi bir ortam sağlamak için iyileştirmeden kazanılan puan azaltıldı." }
+                        ]
+                    },
+                    {
+                        sectionTitle: "Savaş Bölgesi Güncellemeleri",
+                        icon: "fas fa-skull-crossbones",
+                        listInfo: [
+                            { title: "Yaratıklardan Tera Parçacığı düşme şansı iki katına çıkarıldı.", desc: "Oyuncularımızın geri bildirimlerine dayanarak, genel erişilebilirliği ve ilerlemeyi iyileştirmek için Tera Parçacıklarının düşme oranını artırmaya karar verdik." },
+                            { title: "PVP puan kazanımı 3x'ten 4x'e yükseltildi.", desc: "Oyuncularımızın geri bildirimlerine dayanarak, Savaş Bölgesinde kazanılan PVP puanını daha ödüllendirici ve çekici hale getirmek için artırıyoruz." },
+                            { title: "Yaratıklardan PVE ödülleri 1k'dan 3k'ya artırıldı.", desc: "Oyuncularımızın geri bildirimlerine dayanarak, Savaş Bölgesinde kazanılan PVE puanını daha ödüllendirici ve çekici hale getirmek için artırıyoruz." },
+                            { title: "Yaratıklardan Blueprint parça düşme şansı iki katına çıkarıldı.", desc: "Oyuncularımızın geri bildirimlerine dayanarak, ilerlemeyi ve genel ödülleri iyileştirmek için Blueprint parça düşme şansını artırdık." },
+                            { title: "Vorgath Dünya Bossu'ndan Blueprint parça ödülleri 1'den 5'e artırıldı.", desc: "Oyuncu geri bildirimlerine dayanarak, karşılaşmayı daha ödüllendirici ve çabaya değer kılmak için Vorgath Dünya Bossu'ndan düşen Blueprint parça ödüllerini önemli ölçüde artırdık." }
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    {
         id: '0.24',
         versionBadge: 'v1.0.0.24',
         date: '12 April 2026',
