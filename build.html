@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quinfall - Gear Planner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #020617;
+            --panel-bg: #0f172a;
+            --border-color: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-gold: #eab308;
+            --accent-gold-glow: rgba(234, 179, 8, 0.3);
+            --rarity-legendary: #eab308;
+            --rarity-rare: #a855f7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* Nav Bar - Atlas Style */
+        .atlas-nav {
+            background-color: var(--panel-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0 2rem;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .atlas-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .atlas-nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .atlas-nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.2s;
+        }
+
+        .atlas-nav-link:hover, .atlas-nav-link.active {
+            color: var(--accent-gold);
+        }
+
+        /* Layout Container */
+        .atlas-container {
+            display: grid;
+            grid-template-columns: 320px 1fr 380px;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            min-height: calc(100vh - 60px);
+        }
+
+        /* Shared Panel Styles */
+        .atlas-panel {
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Left Column: Character & Gear */
+        .char-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .char-avatar {
+            width: 60px;
+            height: 60px;
+            background-color: var(--border-color);
+            border-radius: 8px;
+            border: 2px solid var(--accent-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .char-info h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .level-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 2rem;
+        }
+        .level-control input {
+            flex-grow: 1;
+            accent-color: var(--accent-gold);
+        }
+
+        .gear-silhouette {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            justify-items: center;
+            position: relative;
+            margin-top: 1rem;
+        }
+        
+        .gear-silhouette::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px; height: 300px;
+            background: url('https://cdn-icons-png.flaticon.com/512/10434/10434220.png') center/contain no-repeat;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .gear-slot {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(0,0,0,0.3);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .gear-slot:hover, .gear-slot.active-slot {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 15px var(--accent-gold-glow);
+            color: var(--text-main);
+        }
+
+        .gear-slot.filled {
+            color: var(--text-main);
+        }
+
+        .gear-slot.filled[data-rarity="legendary"] {
+            border-color: var(--rarity-legendary);
+        }
+        
+        .gear-slot.filled[data-rarity="rare"] {
+            border-color: var(--rarity-rare);
+        }
+
+        .gear-slot-level {
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            background: var(--bg-dark);
+            color: var(--accent-gold);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Middle Column: Item Selector */
+        .selector-tabs {
+            display: flex;
+            gap: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .selector-tab {
+            padding: 0.5rem 0;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .selector-tab.active {
+            color: var(--text-main);
+        }
+
+        .selector-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent-gold);
+        }
+
+        .selection-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .item-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            overflow-y: auto;
+            flex-grow: 1;
+            padding-right: 0.5rem;
+        }
+
+        /* Custom Scrollbar */
+        .item-list::-webkit-scrollbar { width: 6px; }
+        .item-list::-webkit-scrollbar-track { background: var(--bg-dark); border-radius: 4px; }
+        .item-list::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+
+        .item-card {
+            background-color: rgba(0,0,0,0.2);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .item-card:hover {
+            background-color: rgba(255,255,255,0.05);
+            border-color: var(--text-muted);
+        }
+
+        .item-card.legendary { border-left: 3px solid var(--rarity-legendary); }
+        .item-card.rare { border-left: 3px solid var(--rarity-rare); }
+
+        .item-card-title {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .item-card-title.legendary { color: var(--rarity-legendary); }
+        .item-card-title.rare { color: var(--rarity-rare); }
+
+        .item-card-meta {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .item-card-stats {
+            display: flex;
+            gap: 1rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Right Column: Stats */
+        .primary-stats {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .primary-stat-box {
+            flex: 1;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .primary-stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+
+        .primary-stat-value.hp { color: #22c55e; } /* Green */
+        .primary-stat-value.mp { color: #3b82f6; } /* Blue */
+
+        .primary-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.02);
+        }
+
+        .stat-name {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .stat-val {
+            font-weight: 600;
+            color: var(--text-main);
+            font-family: 'Inter', monospace;
+        }
+        
+        .stat-val.ap { color: #ef4444; }
+        .stat-val.dp { color: #3b82f6; }
+
+        .set-bonuses-section h3 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .set-bonus-item {
+            background: rgba(234, 179, 8, 0.05);
+            border: 1px solid rgba(234, 179, 8, 0.2);
+            border-radius: 6px;
+            padding: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .set-bonus-title {
+            color: var(--accent-gold);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .set-bonus-desc {
+            font-size: 0.85rem;
+            color: var(--text-main);
+        }
+
+        /* Lang toggle in nav */
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        .lang-btn.active {
+            background: var(--accent-gold);
+            color: var(--bg-dark);
+            border-color: var(--accent-gold);
+        }
+        
+        /* Empty selection placeholder */
+        .empty-selection {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: var(--text-muted);
+            text-align: center;
+            opacity: 0.5;
+        }
+        
+        .empty-selection i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 1200px) {
+            .atlas-container {
+                grid-template-columns: 1fr 380px;
+            }
+            .atlas-left {
+                grid-column: 1 / 2;
+            }
+            .atlas-middle {
+                grid-column: 1 / -1;
+                order: 3;
+            }
+        }
+        @media (max-width: 800px) {
+            .atlas-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <nav class="atlas-nav">
+        <a href="index.html" class="atlas-logo">
+            <span style="color: var(--accent-gold);">Q</span> ATLAS <span style="font-size: 0.8rem; color: var(--text-muted); font-family: 'Inter';">Planner</span>
+        </a>
+        <div class="atlas-nav-links">
+            <a href="index.html" class="atlas-nav-link" data-tr="Yama Notları" data-en="Patch Notes">Patch Notes</a>
+            <a href="fps.html" class="atlas-nav-link" data-tr="FPS Çözümleri" data-en="FPS Solutions">FPS Solutions</a>
+            <a href="build.html" class="atlas-nav-link active" data-tr="Buildler" data-en="Builds">Builds</a>
+        </div>
+        <div style="display:flex; gap:0.5rem;">
+            <button class="lang-btn active" data-lang="tr">TR</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+    </nav>
+
+    <!-- Main App Container -->
+    <main class="atlas-container">
+        
+        <!-- Left Panel: Character & Equipment -->
+        <div class="atlas-panel atlas-left">
+            <div class="char-header">
+                <div class="char-avatar"><i class="fas fa-user-shield"></i></div>
+                <div class="char-info">
+                    <h2 data-tr="Özel Build" data-en="Custom Build">Özel Build</h2>
+                    <div style="color: var(--text-muted); font-size: 0.85rem;" data-tr="Quinfall Maceracısı" data-en="Quinfall Adventurer">Quinfall Maceracısı</div>
+                </div>
+            </div>
+
+            <!-- Global Enhancement Level Slider -->
+            <div style="margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--text-muted); display:flex; justify-content:space-between;">
+                <span data-tr="Genel Geliştirme Seviyesi" data-en="Global Enhancement Level">Genel Geliştirme Seviyesi</span>
+                <span id="global-level-display" style="color: var(--accent-gold); font-weight: bold;">+0</span>
+            </div>
+            <div class="level-control">
+                <input type="range" id="global-level-slider" min="0" max="15" value="0">
+            </div>
+
+            <!-- Gear Grid (Silhouette style) -->
+            <div class="gear-silhouette">
+                <!-- Top Row -->
+                <div></div>
+                <div class="gear-slot" data-slot="helmet" title="Helmet"><i class="fas fa-helmet-battle"></i></div>
+                <div></div>
+                
+                <!-- Second Row -->
+                <div class="gear-slot" data-slot="earring1" title="Earring"><i class="fas fa-gem"></i></div>
+                <div class="gear-slot" data-slot="chest" title="Chest"><i class="fas fa-shirt"></i></div>
+                <div class="gear-slot" data-slot="necklace" title="Necklace"><i class="fas fa-ring"></i></div>
+                
+                <!-- Third Row -->
+                <div class="gear-slot" data-slot="gloves" title="Gloves"><i class="fas fa-mitten"></i></div>
+                <div class="gear-slot" data-slot="legs" title="Legs"><i class="fas fa-socks"></i></div>
+                <div class="gear-slot" data-slot="ring1" title="Ring"><i class="fas fa-ring"></i></div>
+                
+                <!-- Bottom Row -->
+                <div class="gear-slot" data-slot="weapon1" title="Main Weapon"><i class="fas fa-sword"></i></div>
+                <div class="gear-slot" data-slot="boots" title="Boots"><i class="fas fa-boot"></i></div>
+                <div class="gear-slot" data-slot="weapon2" title="Offhand Weapon"><i class="fas fa-shield"></i></div>
+            </div>
+
+            <div style="margin-top: auto; padding-top: 2rem;">
+                <button id="reset-build" style="width: 100%; padding: 0.8rem; background: transparent; border: 1px solid #ef4444; color: #ef4444; border-radius: 6px; cursor: pointer; font-weight: 600; text-transform: uppercase;" data-tr="Build'i Sıfırla" data-en="Reset Build">Build'i Sıfırla</button>
+            </div>
+        </div>
+
+        <!-- Middle Panel: Item Selection -->
+        <div class="atlas-panel atlas-middle">
+            <div class="selector-tabs">
+                <div class="selector-tab active" data-tr="Ekipman Seçimi" data-en="Equipment Selection">Ekipman Seçimi</div>
+            </div>
+            
+            <div class="selection-header">
+                <h3 id="selection-title" style="font-size: 1.1rem;" data-tr="Bir Slot Seçin" data-en="Select a Slot">Bir Slot Seçin</h3>
+            </div>
+
+            <div class="item-list" id="item-selector-list">
+                <!-- Items populated here by JS -->
+                <div class="empty-selection">
+                    <i class="fas fa-mouse-pointer"></i>
+                    <p data-tr="Eşyaları görmek için soldaki grid üzerinden bir slot seçin." data-en="Select a slot from the grid on the left to see available items."></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel: Stats & Details -->
+        <div class="atlas-panel atlas-right">
+            
+            <!-- Primary HP/MP -->
+            <div class="primary-stats">
+                <div class="primary-stat-box">
+                    <div class="primary-stat-value hp" id="stat-total-hp">3500</div>
+                    <div class="primary-stat-label" data-tr="Sağlık Puanı" data-en="Health Points">Sağlık Puanı</div>
+                </div>
+                <div class="primary-stat-box">
+                    <div class="primary-stat-value mp">1200</div>
+                    <div class="primary-stat-label" data-tr="Mana Puanı" data-en="Mana Points">Mana Puanı</div>
+                </div>
+            </div>
+
+            <!-- Detailed Stats Grid -->
+            <h3 style="font-size: 0.9rem; text-transform: uppercase; margin-bottom: 1rem; color: var(--text-muted);" data-tr="Savaş İstatistikleri" data-en="Combat Statistics">Savaş İstatistikleri</h3>
+            <div class="stat-grid">
+                <div class="stat-row">
+                    <div class="stat-name"><i class="fas fa-khanda" style="color: #ef4444;"></i> AP</div>
+                    <div class="stat-val ap" id="stat-total-ap">0</div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-name"><i class="fas fa-shield-halved" style="color: #3b82f6;"></i> DP</div>
+                    <div class="stat-val dp" id="stat-total-dp">0</div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-name"><i class="fas fa-bolt" style="color: #eab308;"></i> Crit Rate</div>
+                    <div class="stat-val">5.0%</div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-name"><i class="fas fa-shoe-prints" style="color: #a855f7;"></i> Speed</div>
+                    <div class="stat-val">100</div>
+                </div>
+            </div>
+
+            <!-- Set Bonuses -->
+            <div class="set-bonuses-section">
+                <h3 data-tr="Aktif Set Bonusları" data-en="Active Set Bonuses">Aktif Set Bonusları</h3>
+                <div id="active-set-bonuses-list">
+                    <!-- Dynamic -->
+                    <div style="font-size: 0.85rem; color: var(--text-muted); opacity: 0.6; text-align: center; padding: 1rem;" data-tr="Şu anda aktif bir set bonusu yok." data-en="No active set bonuses currently.">
+                        Şu anda aktif bir set bonusu yok.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Script for Logic -->
+    <script src="simulator.js"></script>
+
+    <!-- Language Toggle Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const langBtns = document.querySelectorAll('.lang-btn');
+            let currentLang = localStorage.getItem('quinfall_lang') || 'tr';
+            setLanguage(currentLang);
+
+            langBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const selectedLang = e.target.getAttribute('data-lang');
+                    if (selectedLang !== currentLang) {
+                        setLanguage(selectedLang);
+                        document.dispatchEvent(new CustomEvent('languageChanged', { detail: selectedLang }));
+                    }
+                });
+            });
+
+            function setLanguage(lang) {
+                currentLang = lang;
+                localStorage.setItem('quinfall_lang', lang);
+                langBtns.forEach(btn => {
+                    if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
+                    else btn.classList.remove('active');
+                });
+                document.querySelectorAll('[data-tr]').forEach(el => {
+                    if (lang === 'tr') el.textContent = el.getAttribute('data-tr');
+                    else if (lang === 'en') el.textContent = el.getAttribute('data-en');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

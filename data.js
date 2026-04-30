@@ -1,5 +1,110 @@
 const patchList = [
     {
+        id: '0.26',
+        versionBadge: 'v1.0.0.26',
+        date: '30 April 2026',
+        data: {
+            en: {
+                title: "The Quinfall - Patch v1.0.0.26",
+                intro: "In this update, we are introducing the highly anticipated 3v3 Trio Arena, alongside significant adjustments to World Boss rewards and Combat Zone dynamics.<br><br>We've also focused on improving the game's economy and progression systems, addressing various bugs, and implementing quality-of-life enhancements across the board.",
+                ui: {
+                    devNoteTitle: "Dev Note",
+                    devCommentaryTitle: "Developer Commentary"
+                },
+                sections: [
+                    {
+                        sectionTitle: "Bug Fixes",
+                        icon: "fas fa-bug",
+                        listInfo: [
+                            { title: "Fixed an issue where the statue buff providing 15% PvP Defense would occasionally not apply instantly.", desc: "PvP Defense bonus now applies instantly and reliably every time." },
+                            { title: "Fixed a visual bug encountered during Elite Accessory crafting.", desc: "The crafting UI was showing things it shouldn’t. We’ve cleaned it up so Elite Accessory crafting looks and behaves exactly as intended." },
+                            { title: "Fixed an issue where the final hit of the Spear skill Aerial Onslaught would sometimes not deal damage.", desc: "The damage application has been corrected to ensure the ability now reliably lands all intended hits, delivering the full impact of the combo every time." },
+                            { title: "Fixed an issue in the Combat Zone where dead characters would sometimes appear with full HP.", desc: "This was a display desync issue causing confusing health states after death. The UI now properly reflects character status." },
+                            { title: "Fixed an issue where the Main Menu could not be closed with the ESC key.", desc: "We’ve fixed the issue so players can now smoothly exit the Main Menu without getting stuck." },
+                            { title: "Fixed a visual bug where other players could not properly see the resurrection animation.", desc: "This display desync issue regarding revived characters has been fixed." }
+                        ]
+                    },
+                    {
+                        sectionTitle: "Combat Zone Updates",
+                        icon: "fas fa-skull-crossbones",
+                        listInfo: [
+                            { title: "The entry fee for the Combat Zone has been removed.", desc: "The Combat Zone is now open to everyone—no entry cost, no barriers. More players, more fights, more action." },
+                            { title: "The number of monsters in the Combat Zone has been significantly increased.", desc: "We’ve cranked up the monster density to keep the action constant, boost rewards, and make every run feel worth your time." }
+                        ]
+                    },
+                    {
+                        sectionTitle: "General Updates",
+                        icon: "fas fa-list-ul",
+                        listInfo: [
+                            { title: "The new 3v3 event system, Trio Arena, has been added.", desc: "This is a fully queue-based competitive arena. Equalized gear, no consumables, 1 tank and 1 healer cap per team, played in a Best of 3 format. Ranks and rewards are distributed weekly." },
+                            { title: "Vorgath World Boss adjustments.", desc: "Vorgath's HP has been reduced by 25%. Additionally, the 3x Tera reward has been removed, and total distributed Action Coins have been increased from 5k to 90k for better contribution-based reward distribution." },
+                            { title: "Kraken World Boss adjustments.", desc: "The Kraken will now spawn every 12 hours. The guaranteed Tera reward has been removed, and total distributed Action Coins have been increased from 5k to 30k for better scaling with dealt damage." },
+                            { title: "PvP Point rewards in Arena battles have been increased.", desc: "PvP Point rewards have been massively boosted by 4 times so every match feels worth the grind." },
+                            { title: "Prices of items in the Olympic Coin Market have been slightly reduced.", desc: "Tera pricing has been significantly reduced from 2000 to 700, and several other materials have seen their costs cut by up to half." },
+                            { title: "NPC sell prices for equipment level 75 and below have been decreased.", desc: "We’ve reduced their NPC sell prices by half to keep early-mid game economy balanced." },
+                            { title: "Tera Protection obtained from Silver Prize Wheels is now non-tradable.", desc: "By restricting trade on certain high-value rewards, we aim to reduce unintended market activity." },
+                            { title: "Clan Coin deposit restrictions have been implemented.", desc: "Clan members can now deposit Coins into the clan storage only if at least 5 days have passed since the clan’s creation and the clan is above level 2." },
+                            { title: "A crown indicator has been added to clan leaders’ titles.", desc: "We’ve added a crown indicator so clan leadership is instantly recognizable." },
+                            { title: "Central Market limits have been increased.", desc: "The purchase limit for materials and the limit for buy orders have both been increased from 999 to 1000." },
+                            { title: "The character limit for the Reference ID input field has been increased.", desc: "We’ve expanded the limit to better accommodate longer reference nicknames for new players." },
+                            { title: "Various spelling errors in translations have been corrected.", desc: "We’ve cleaned up a number of translation issues and typos across the game to improve clarity." },
+                            { title: "A new costume wheel has been added to the shop.", desc: "Fresh looks, new styles, same spin." }
+                        ]
+                    }
+                ]
+            },
+            tr: {
+                title: "The Quinfall - Yama v1.0.0.26",
+                intro: "Bu güncellemede, merakla beklenen 3v3 Trio Arena'yı, Dünya Bossu ödüllerindeki ve Savaş Bölgesi dinamiklerindeki önemli ayarlamalarla birlikte sunuyoruz.<br><br>Ayrıca oyunun ekonomisini ve ilerleme sistemlerini iyileştirmeye odaklandık, çeşitli hataları giderdik ve genel yaşam kalitesi iyileştirmelerini hayata geçirdik.",
+                ui: {
+                    devNoteTitle: "Geliştirici Notu",
+                    devCommentaryTitle: "Geliştiricinin Yorumu"
+                },
+                sections: [
+                    {
+                        sectionTitle: "Hata Düzeltmeleri",
+                        icon: "fas fa-bug",
+                        listInfo: [
+                            { title: "%15 PvP Defans sağlayan heykel güçlendirmesinin bazen anında uygulanmaması sorunu düzeltildi.", desc: "PvP Savunma bonusu artık her seferinde anında ve güvenilir bir şekilde uygulanıyor." },
+                            { title: "Elit Takı üretimi sırasında karşılaşılan görsel bir hata düzeltildi.", desc: "Üretim arayüzündeki görüntü hataları giderildi, artık Elit Takı üretimi tamamen tasarlandığı gibi görünüyor ve çalışıyor." },
+                            { title: "Mızrak yeteneği Aerial Onslaught'un (Havadan Saldırı) son vuruşunun bazen hasar vermemesi sorunu düzeltildi.", desc: "Hasar uygulaması düzeltildi, böylece yetenek artık tüm planlanan vuruşları güvenilir bir şekilde gerçekleştiriyor." },
+                            { title: "Savaş Bölgesi'nde ölü karakterlerin bazen tam HP ile görünmesine neden olan bir hata düzeltildi.", desc: "Bu, ölümden sonra kafa karıştırıcı sağlık durumlarına neden olan bir görüntü senkronizasyonu sorunuydu. Arayüz artık karakter durumunu doğru şekilde yansıtıyor." },
+                            { title: "Ana Menünün ESC tuşu ile kapatılamaması sorunu düzeltildi.", desc: "Oyuncuların Ana Menüden takılı kalmadan sorunsuz bir şekilde çıkabilmesi için bu hata giderildi." },
+                            { title: "Diğer oyuncuların diriltilen karakterlerin diriliş animasyonunu düzgün göremediği görsel bir hata düzeltildi.", desc: "Diriltilen karakterlerle ilgili bu görsel senkronizasyon sorunu giderildi." }
+                        ]
+                    },
+                    {
+                        sectionTitle: "Savaş Bölgesi Güncellemeleri",
+                        icon: "fas fa-skull-crossbones",
+                        listInfo: [
+                            { title: "Savaş Bölgesi (Combat Zone) giriş ücreti kaldırıldı.", desc: "Savaş Bölgesi artık herkese açık; giriş maliyeti veya bariyer yok. Daha fazla oyuncu, daha fazla savaş, daha fazla aksiyon." },
+                            { title: "Savaş Bölgesi'ndeki canavar sayısı önemli ölçüde artırıldı.", desc: "Aksiyonu sürekli kılmak, ödülleri artırmak ve her girişin harcanan zamana değmesini sağlamak için canavar yoğunluğunu artırdık." }
+                        ]
+                    },
+                    {
+                        sectionTitle: "Genel Güncellemeler",
+                        icon: "fas fa-list-ul",
+                        listInfo: [
+                            { title: "Yeni 3v3 etkinlik sistemi Trio Arena eklendi.", desc: "Bu, tamamen sıraya dayalı rekabetçi bir arenadır. Eşitlenmiş ekipman, tüketilebilir eşya yok, takım başına en fazla 1 tank ve 1 şifacı sınırı var. Maçlar 3 maçlık (Best of 3) seriler halinde oynanır. Sıralamalar ve ödüller haftalık olarak dağıtılır." },
+                            { title: "Vorgath Dünya Bossu ayarlamaları.", desc: "Vorgath'ın HP'si %25 düşürüldü. Ayrıca, 3x Tera ödülü kaldırıldı ve daha iyi katkıya dayalı ödül dağıtımı için dağıtılan toplam Action Coin (Aksiyon Sikkesi) 5 binden 90 bine çıkarıldı." },
+                            { title: "Kraken Dünya Bossu ayarlamaları.", desc: "Kraken artık her 12 saatte bir doğacak. Garantili Tera ödülü kaldırıldı ve verilen hasarla daha iyi ölçeklenmesi için dağıtılan toplam Action Coin (Aksiyon Sikkesi) 5 binden 30 bine çıkarıldı." },
+                            { title: "Arena savaşlarındaki PvP Puanı ödülleri artırıldı.", desc: "Her maçın emeğe değmesi için PvP Puanı ödülleri 4 katına çıkarıldı." },
+                            { title: "Olimpiyat Sikkesi (Olympic Coin) Marketindeki eşyaların fiyatları hafifçe düşürüldü.", desc: "Tera fiyatı 2000'den 700'e düşürüldü ve diğer birçok malzemenin maliyeti yarı yarıya azaltıldı." },
+                            { title: "Seviye 75 ve altı ekipmanların NPC'ye satış fiyatları düşürüldü.", desc: "Erken-orta oyun ekonomisini dengede tutmak için bu eşyaların NPC satış fiyatlarını yarı yarıya düşürdük." },
+                            { title: "Gümüş Şans Çarklarından elde edilen Tera Koruması artık takas edilemez.", desc: "Belirli yüksek değerli ödüllerin ticaretini kısıtlayarak, istenmeyen piyasa faaliyetlerini azaltmayı hedefliyoruz." },
+                            { title: "Klan Altın yatırma kısıtlamaları uygulandı.", desc: "Klan üyeleri artık klan deposuna yalnızca klanın kuruluşunun üzerinden en az 5 gün geçmişse ve klan 2. seviyenin üzerindeyse Altın yatırabilir." },
+                            { title: "Klan liderlerinin unvanlarına bir taç göstergesi eklendi.", desc: "Klan liderliğinin anında fark edilebilmesi için bir taç göstergesi ekledik." },
+                            { title: "Merkez Market limitleri artırıldı.", desc: "Malzemeler için satın alma limiti ve alım emirleri limiti 999'dan 1000'e çıkarıldı." },
+                            { title: "Referans ID giriş alanı için karakter sınırı artırıldı.", desc: "Yeni oyuncular için daha uzun referans takma adlarını desteklemek amacıyla sınırı genişlettik." },
+                            { title: "Çevirilerdeki çeşitli yazım hataları düzeltildi.", desc: "Oyun genelindeki çeviri sorunlarını ve yazım hatalarını düzelttik." },
+                            { title: "Mağazaya yeni bir kostüm çarkı eklendi.", desc: "Yeni görünümler, yeni stiller, aynı çark deneyimi." }
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    {
         id: '0.25',
         versionBadge: 'v1.0.0.25',
         date: '19 April 2026',
