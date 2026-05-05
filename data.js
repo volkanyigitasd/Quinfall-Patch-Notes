@@ -1,5 +1,234 @@
 const patchList = [
     {
+        id: '0.28',
+        versionBadge: 'v1.0.0.28',
+        date: '5 May 2026',
+        data: {
+            en: {
+                title: "The Quinfall - Patch v1.0.0.28",
+                intro: "In this update, we are introducing a variety of improvements, bug fixes, and class balancing adjustments to provide a more refined combat and gameplay experience.<br><br>Notable changes include a guarantee (pity) system added to the upgrade system, mount speed increases, and numerous adjustments to Trio Arena matchmaking, rewards, and gameplay mechanics.",
+                ui: {
+                    devNoteTitle: "Dev Note",
+                    devCommentaryTitle: "Developer Commentary"
+                },
+                sections: [
+                    {
+                        sectionTitle: "Class Balance",
+                        icon: "fas fa-balance-scale",
+                        blocks: [
+                            {
+                                title: "Sword & Shield",
+                                icon: "fas fa-shield-alt",
+                                intro: "Adjustments to better fit its defensive role.",
+                                changes: [
+                                    { name: "Auto Attacks:", detail: "Damage reduced by 50%." }
+                                ]
+                            },
+                            {
+                                title: "Two Hand Sword",
+                                icon: "fas fa-gavel",
+                                intro: "Damage output and burst potential have been balanced.",
+                                changes: [
+                                    { name: "Auto Attacks:", detail: "Damage reduced by 10%." },
+                                    { name: "Razor Echo:", detail: "Cooldown increased by 7 seconds." }
+                                ]
+                            },
+                            {
+                                title: "Life Staff",
+                                icon: "fas fa-heart",
+                                intro: "Mobility advantage has been reduced.",
+                                changes: [
+                                    { name: "Realm Shift:", detail: "Cooldown increased from 18s to 30s." }
+                                ]
+                            },
+                            {
+                                title: "Arcane Staff",
+                                icon: "fas fa-magic",
+                                intro: "Mobility has been balanced.",
+                                changes: [
+                                    { name: "Elemental Dash:", detail: "Cooldown increased from 15s to 25s." }
+                                ]
+                            },
+                            {
+                                title: "Crossbow",
+                                icon: "fas fa-crosshairs",
+                                intro: "Improves overall damage output, usability, and control reliability.",
+                                changes: [
+                                    { name: "Stun Bomb:", detail: "Stun duration increased to 0.75 seconds." },
+                                    { name: "Explosive Arrow:", detail: "Casting speed increased and AoE radius expanded." },
+                                    { name: "Auto Attacks:", detail: "Damage increased by 15%." }
+                                ]
+                            },
+                            {
+                                title: "Bow",
+                                icon: "fas fa-bullseye",
+                                intro: "Enhances responsiveness, hit consistency, and sustained damage.",
+                                changes: [
+                                    { name: "Quick Draw:", detail: "Hitbox increased." },
+                                    { name: "Piercing Arrow:", detail: "Casting speed and projectile speed increased." },
+                                    { name: "Deadeye (Passive):", detail: "Bonus damage increased from 10% to 20%." }
+                                ]
+                            },
+                            {
+                                title: "Warhammer",
+                                icon: "fas fa-hammer",
+                                intro: "Improves skill uptime, control frequency, and significantly increases survivability.",
+                                changes: [
+                                    { name: "Discharge:", detail: "Required stacks reduced from 5 to 4." },
+                                    { name: "Earthshatter:", detail: "Cooldown reduced from 80s to 60s." },
+                                    { name: "Stone Arena:", detail: "Cooldown reduced from 80s to 60s." },
+                                    { name: "Iron Will:", detail: "Shield strength doubled." }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        sectionTitle: "Trio Arena Updates",
+                        icon: "fas fa-users",
+                        listInfo: [
+                            { title: "A collider issue related to some escape points has been fixed.", desc: "Unintended escape paths have been removed to ensure fairer engagements." },
+                            { title: "Trio Arena is now only accessible on Channel 4 (CH4).", desc: "This change was made to improve matchmaking speed and consistency." },
+                            { title: "The number of participants is now displayed during matchmaking.", desc: "Players can better track queue status, and the minimum player requirement has been reduced." },
+                            { title: "Victory and Defeat indicators have been added.", desc: "These appear at the end of each round to provide clearer feedback on match progress and outcomes." },
+                            { title: "Tera Protection and Tera Fragments have been added to rewards.", desc: "Arena participation is now more rewarding and progression-focused." },
+                            { title: "Match outcome calculation adjusted for time-outs.", desc: "If all 3 target enemies are not eliminated before time runs out, the result is now determined by the number of defeated players. This prevents unnecessary draws and discourages passive play." },
+                            { title: "Round-end rewards based on player rankings have been added.", desc: "Players can now see performance-based rewards directly in the UI." },
+                            { title: "A rare issue where players were instantly removed from matches has been fixed.", desc: "This improves overall match stability." }
+                        ]
+                    },
+                    {
+                        sectionTitle: "System & General Updates",
+                        icon: "fas fa-cog",
+                        listInfo: [
+                            { title: "A guarantee (pity) system has been added to the upgrade system.", desc: "After a certain number of attempts, the next upgrade is guaranteed to succeed, with a dynamic counter system." },
+                            { title: "Mount speed has been increased by 2x.", desc: "PvE mount combat restrictions have been removed, while PvP restrictions remain." },
+                            { title: "The invulnerability effect during dodge (roll) has been removed.", desc: "However, CC Protection remains active." },
+                            { title: "Low star-level item bonuses have been rebalanced.", desc: "High star-level items remain unchanged while lower tiers are improved." },
+                            { title: "Robe set Physical Defense reduction increased from 10% to 25%.", desc: "Creates a more noticeable risk/reward balance." },
+                            { title: "Critical Chance of Tier 2 and Tier 3 Power Stones increased by 20%.", desc: "This makes these items more impactful in builds." },
+                            { title: "PVP Coin Market prices have been significantly reduced.", desc: "This improves accessibility to market items." },
+                            { title: "A new button has been added to the Repair screen.", desc: "You can now automatically select all repairable equipment to streamline the repair process." },
+                            { title: "Informational warnings have been added to certain interfaces.", desc: "Added to screens like the Mail screen to help players better understand interface-related actions and system messages." },
+                            { title: "An issue where set bonus items caused stat inconsistencies has been fixed.", desc: "All gear bonuses now apply correctly and consistently." },
+                            { title: "Various text, localization, and clan UI issues have been fixed.", desc: "General wording improvements have been applied and clan join dates are now displayed correctly." }
+                        ]
+                    }
+                ]
+            },
+            tr: {
+                title: "The Quinfall - Yama v1.0.0.28",
+                intro: "Bu güncellemede, daha iyi bir savaş ve oynanış deneyimi sunmak amacıyla çeşitli iyileştirmeler, hata düzeltmeleri ve sınıf dengeleme ayarlamaları yapıyoruz.<br><br>Önemli değişiklikler arasında eşya yükseltme sistemine eklenen garanti (pity) sistemi, binek hızı artışları ve Trio Arena eşleştirmesi, ödülleri ve mekaniklerinde yapılan sayısız düzenleme yer alıyor.",
+                ui: {
+                    devNoteTitle: "Geliştirici Notu",
+                    devCommentaryTitle: "Geliştiricinin Yorumu"
+                },
+                sections: [
+                    {
+                        sectionTitle: "Sınıf Dengelemeleri",
+                        icon: "fas fa-balance-scale",
+                        blocks: [
+                            {
+                                title: "Kılıç ve Kalkan (Sword & Shield)",
+                                icon: "fas fa-shield-alt",
+                                intro: "Savunma rolüne daha iyi uyması için ayarlandı.",
+                                changes: [
+                                    { name: "Temel Saldırılar:", detail: "Hasar %50 azaltıldı." }
+                                ]
+                            },
+                            {
+                                title: "Çift Elli Kılıç (Two Hand Sword)",
+                                icon: "fas fa-gavel",
+                                intro: "Hasar çıkışı ve anlık hasar potansiyeli dengelendi.",
+                                changes: [
+                                    { name: "Temel Saldırılar:", detail: "Hasar %10 azaltıldı." },
+                                    { name: "Jilet Yankı (Razor Echo):", detail: "Bekleme süresi 7 saniye artırıldı." }
+                                ]
+                            },
+                            {
+                                title: "Yaşam Asası (Life Staff)",
+                                icon: "fas fa-heart",
+                                intro: "Hareketlilik avantajı azaltıldı.",
+                                changes: [
+                                    { name: "Diyar Kayması (Realm Shift):", detail: "Bekleme süresi 18 saniyeden 30 saniyeye çıkarıldı." }
+                                ]
+                            },
+                            {
+                                title: "Arkan Asası (Arcane Staff)",
+                                icon: "fas fa-magic",
+                                intro: "Hareketlilik dengelendi.",
+                                changes: [
+                                    { name: "Elementel Atılım (Elemental Dash):", detail: "Bekleme süresi 15 saniyeden 25 saniyeye çıkarıldı." }
+                                ]
+                            },
+                            {
+                                title: "Arbalet (Crossbow)",
+                                icon: "fas fa-crosshairs",
+                                intro: "Genel hasar çıkışı, kullanılabilirlik ve kontrol güvenilirliği artırıldı.",
+                                changes: [
+                                    { name: "Sersemletme Bombası (Stun Bomb):", detail: "Sersemletme süresi 0.75 saniyeye çıkarıldı." },
+                                    { name: "Patlayıcı Ok (Explosive Arrow):", detail: "Kullanım hızı artırıldı ve etki alanı genişletildi." },
+                                    { name: "Temel Saldırılar:", detail: "Hasar %15 artırıldı." }
+                                ]
+                            },
+                            {
+                                title: "Yay (Bow)",
+                                icon: "fas fa-bullseye",
+                                intro: "Tepki süresi, isabet tutarlılığı ve sürekli hasar potansiyeli iyileştirildi.",
+                                changes: [
+                                    { name: "Hızlı Çekim (Quick Draw):", detail: "İsabet alanı (hitbox) artırıldı." },
+                                    { name: "Delici Ok (Piercing Arrow):", detail: "Kullanım hızı ve mermi hızı artırıldı." },
+                                    { name: "Keskin Nişancı (Deadeye - Pasif):", detail: "Bonus hasar %10'dan %20'ye çıkarıldı." }
+                                ]
+                            },
+                            {
+                                title: "Savaş Çekici (Warhammer)",
+                                icon: "fas fa-hammer",
+                                intro: "Yeteneklerin kullanılabilirliği iyileştirildi ve hayatta kalma becerisi önemli ölçüde artırıldı.",
+                                changes: [
+                                    { name: "Deşarj (Discharge):", detail: "Gereken yük sayısı 5'ten 4'e düşürüldü." },
+                                    { name: "Yeri Yaran (Earthshatter):", detail: "Bekleme süresi 80 saniyeden 60 saniyeye düşürüldü." },
+                                    { name: "Taş Arena (Stone Arena):", detail: "Bekleme süresi 80 saniyeden 60 saniyeye düşürüldü." },
+                                    { name: "Demir İrade (Iron Will):", detail: "Kalkan gücü iki katına çıkarıldı." }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        sectionTitle: "Trio Arena Güncellemeleri",
+                        icon: "fas fa-users",
+                        listInfo: [
+                            { title: "Bazı kaçış noktalarıyla ilgili çarpışma sorunu düzeltildi.", desc: "Daha adil bir ortam sağlamak için istenmeyen kaçış yolları kaldırıldı." },
+                            { title: "Trio Arena artık sadece Kanal 4 (CH4) üzerinden erişilebilir.", desc: "Bu değişiklik eşleştirme hızını ve tutarlılığını artırmak için yapıldı." },
+                            { title: "Eşleştirme sırasında artık katılımcı sayısı görüntüleniyor.", desc: "Oyuncular kuyruk durumunu daha iyi takip edebilir ve minimum oyuncu gereksinimi azaltıldı." },
+                            { title: "Zafer ve Bozgun göstergeleri eklendi.", desc: "Her turun sonuna eklenen bu göstergeler maç sonuçları hakkında daha net geri bildirim sağlar." },
+                            { title: "Ödüllere Tera Koruması ve Tera Parçacıkları eklendi.", desc: "Arena katılımı artık daha ödüllendirici ve gelişime odaklı." },
+                            { title: "Süre aşımı durumunda maç sonucu hesaplaması güncellendi.", desc: "Süre dolmadan 3 düşman da elimine edilmezse, sonuç mağlup edilen oyuncu sayısına göre belirlenecek. Bu pasif oyunu caydırır." },
+                            { title: "Oyuncu sıralamalarına dayalı tur sonu ödülleri eklendi.", desc: "Oyuncular artık performansa dayalı ödülleri doğrudan arayüzde görebilir." },
+                            { title: "Oyuncuların maçlardan anında çıkarılmasına neden olan nadir bir sorun düzeltildi.", desc: "Bu düzeltme genel maç istikrarını artırır." }
+                        ]
+                    },
+                    {
+                        sectionTitle: "Sistem ve Genel Güncellemeler",
+                        icon: "fas fa-cog",
+                        listInfo: [
+                            { title: "Geliştirme sistemine bir garanti (pity) sistemi eklendi.", desc: "Belirli bir deneme sayısından sonra, dinamik bir sayaç sistemiyle bir sonraki eşya yükseltmesinin başarılı olması garanti edilir." },
+                            { title: "Binek hızı 2 kat artırıldı.", desc: "PvE binek savaşı kısıtlamaları kaldırıldı (PvP kısıtlamaları aktif kalmaya devam ediyor)." },
+                            { title: "Kaçınma (dodge/roll) sırasındaki hasar görmezlik etkisi kaldırıldı.", desc: "Ancak CC (Kitle Kontrol) Koruması aktif kalmaya devam ediyor." },
+                            { title: "Düşük yıldız seviyeli eşya bonusları yeniden dengelendi.", desc: "Yüksek yıldız seviyeli eşyalar değişmezken alt kademeler iyileştirildi." },
+                            { title: "Kumaş (Robe) seti Fiziksel Savunma düşüşü %10'dan %25'e çıkarıldı.", desc: "Bu değişiklik daha belirgin bir risk/ödül dengesi yaratır." },
+                            { title: "Seviye 2 ve Seviye 3 Güç Taşlarının Kritik Şansı %20 artırıldı.", desc: "Bu eşyalar artık dizilimlerde daha etkili hale geldi." },
+                            { title: "PVP Coin Market fiyatları önemli ölçüde düşürüldü.", desc: "Market eşyalarına erişilebilirlik kolaylaştırıldı." },
+                            { title: "Tamir (Repair) ekranına yeni bir buton eklendi.", desc: "Tamir edilebilir tüm ekipmanları otomatik olarak seçerek süreci hızlandırabilirsiniz." },
+                            { title: "Belirli arayüzlere bilgilendirici uyarılar eklendi.", desc: "Oyuncuların sistem mesajlarını daha iyi anlamaları için Posta ekranı gibi yerlere bilgilendirmeler eklendi." },
+                            { title: "Set bonusu eşyalarının stat tutarsızlıklarına neden olduğu sorun düzeltildi.", desc: "Tüm ekipman bonusları artık doğru ve tutarlı bir şekilde uygulanıyor." },
+                            { title: "Çeşitli metin, yerelleştirme ve klan arayüzü sorunları düzeltildi.", desc: "Genel çeviri iyileştirmeleri uygulandı ve klan katılma tarihleri artık doğru şekilde görüntüleniyor." }
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    {
         id: '0.26',
         versionBadge: 'v1.0.0.26',
         date: '30 April 2026',
