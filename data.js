@@ -1,5 +1,120 @@
 const patchList = [
     {
+        id: '17.05.2026',
+        versionBadge: '17.05.2026 Hotfix ve Dengelemeler',
+        date: '17 May 2026',
+        data: {
+            en: {
+                title: "Combat Balance Hotfix",
+                intro: "Quinfall Community,<br><br>Today was originally planned to be a much larger update day for Quinfall. We had a major update prepared, with a wide range of changes aimed at improving combat, progression, and the overall player experience.<br><br>However, during our final review and testing, we identified several outliers that we are not comfortable pushing to live in their current state.<br><br>We want to be very clear about this: we will not rush an update just to meet a date. Every release we push live needs to meet the quality standard that Quinfall players deserve. If something is not ready, if something risks creating more problems than it solves, or if something does not meet our internal expectations, we will hold it back and continue working on it.<br><br>That is the standard we are holding ourselves to.<br><br>The larger update is still actively being worked on, and we want it to land in the best state possible. In the meantime, we are releasing a focused balance hotfix that addresses some of the harder-hitting issues we have heard from the community, especially around PvP balance, combat feel, and class performance.<br><br>This hotfix is about listening, responding, and improving what we can now while making sure the larger update receives the polish and testing it needs before going live.",
+                ui: {
+                    devNoteTitle: "Dev Note",
+                    devCommentaryTitle: "Developer Commentary"
+                },
+                sections: [
+                    {
+                        sectionTitle: "Class Balance",
+                        icon: "fas fa-balance-scale",
+                        blocks: [
+                            {
+                                title: "Healer",
+                                icon: "fas fa-heart",
+                                intro: "Healers are currently dealing more damage than several equivalent DPS roles, with Mage being the primary exception. Since healers now have stronger healing output, we are reducing their PvP damage to better balance their overall role in combat. Healers should remain impactful, but their damage should not outpace dedicated damage roles while also providing strong sustain.",
+                                changes: [
+                                    { name: "PvP Damage:", detail: "Healer damage in PvP has been reduced by 25%." }
+                                ]
+                            },
+                            {
+                                title: "Two-Handed Sword",
+                                icon: "fas fa-gavel",
+                                intro: "Two-Handed Sword is currently outperforming other DPS options in party content to the point where it is limiting class and build diversity. This change is intended to reduce Fury Impact’s dominance in coordinated group play while keeping Two-Handed Sword viable as a strong damage option. Our goal is to make sure DPS roles can compete meaningfully without one weapon or skill becoming the default choice for party content.",
+                                changes: [
+                                    { name: "Fury Impact:", detail: "Max HP damage has been reduced in PvE." }
+                                ]
+                            },
+                            {
+                                title: "Tank",
+                                icon: "fas fa-shield-alt",
+                                intro: "We are making several adjustments aimed at improving the tank experience, especially after reviewing how recent balance changes impacted both solo and group play. This should help tanks feel better in PvE while still maintaining healthier PvP balance.",
+                                changes: [
+                                    { name: "Basic Attacks:", detail: "Sword and Shield basic attack damage increased by 100%." },
+                                    { name: "Valiant Slash:", detail: "PvE modifier has been increased. This change is intended to help tanks solo farm more effectively and contribute more meaningfully in group PvE content." }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        sectionTitle: "General Updates",
+                        icon: "fas fa-list-ul",
+                        listInfo: [
+                            { title: "Dodge Invulnerability Frames", desc: "Dodge now grants 0.5 seconds of invulnerability. The previous version of dodge, which granted 1.5 seconds of invulnerability, was too strong and created too much safety in combat. However, we also recognize that dodge timing is an important form of skill mastery. Players should have agency when predicting enemy burst windows and responding with well-timed defensive play. This adjustment brings back meaningful dodge counterplay without returning it to an overpowered state." },
+                            { title: "PvP Scrolls Removed", desc: "PvP Scrolls have been removed from purchase. PvP Scrolls previously cost 10M for only 10 minutes of use, which created an unnecessary barrier for players who wanted to participate in PvP more casually. We missed the mark when adding this system. PvP should feel accessible and competitive, not locked behind a heavy recurring cost that discourages players from joining in. Because of that, these scrolls can no longer be purchased. Players who previously bought PvP Scrolls will receive their money back with this hotfix." }
+                        ]
+                    },
+                    {
+                        sectionTitle: "Closing Notes",
+                        icon: "fas fa-bullhorn",
+                        intro: "This hotfix is focused on listening, responding, and improving the feel of combat while we continue preparing the larger update currently in development.<br><br>We know PvP balance is one of the most important parts of Quinfall’s long-term health. Our goal is to maintain competitive integrity while still allowing players to feel powerful, responsive, and rewarded for mastering their class."
+                    }
+                ]
+            },
+            tr: {
+                title: "17.05.2026 Hotfix ve Dengelemeler",
+                intro: "Quinfall Topluluğu,<br><br>Bugün başlangıçta Quinfall için çok daha büyük bir güncelleme günü olarak planlanmıştı. Savaş sistemini, ilerlemeyi ve genel oyuncu deneyimini geliştirmeyi amaçlayan çok çeşitli değişiklikler içeren büyük bir güncelleme hazırlamıştık.<br><br>Ancak son incelemelerimiz ve testlerimiz sırasında, mevcut halleriyle canlı sunuculara eklemekten rahatsızlık duyduğumuz birkaç pürüz tespit ettik.<br><br>Bu konuda çok net olmak istiyoruz: Sırf bir tarihe yetişmek için hiçbir güncellemeyi aceleye getirmeyeceğiz. Canlıya aldığımız her sürüm, Quinfall oyuncularının hak ettiği kalite standardını karşılamalıdır. Eğer bir şey hazır değilse, çözdüğünden daha fazla sorun yaratma riski taşıyorsa veya şirket içi beklentilerimizi karşılamıyorsa, onu bekletecek ve üzerinde çalışmaya devam edeceğiz.<br><br>Kendimize belirlediğimiz standart budur.<br><br>Büyük güncelleme üzerinde hala aktif olarak çalışıyoruz ve en iyi durumda oyuna eklenmesini istiyoruz. Bu süre zarfında topluluktan duyduğumuz, özellikle PvP dengesi, savaş hissi ve sınıf performansıyla ilgili en can alıcı sorunların bazılarını çözen odaklanmış bir denge hotfix'i (ara yama) yayınlıyoruz.<br><br>Bu hotfix; dinlemek, yanıt vermek ve şu an elimizden geleni iyileştirmekle ilgilidir. Aynı zamanda büyük güncellemenin canlıya geçmeden önce ihtiyaç duyduğu cilalamayı ve testleri almasını sağlamaktayız.",
+                ui: {
+                    devNoteTitle: "Geliştirici Notu",
+                    devCommentaryTitle: "Geliştiricinin Yorumu"
+                },
+                sections: [
+                    {
+                        sectionTitle: "Sınıf Dengelemeleri",
+                        icon: "fas fa-balance-scale",
+                        blocks: [
+                            {
+                                title: "Şifacı (Healer)",
+                                icon: "fas fa-heart",
+                                intro: "Şifacılar şu anda Büyücü (Mage) hariç diğer DPS rollerinden daha fazla hasar veriyor. Şifacıların iyileştirme gücü artık daha yüksek olduğu için, savaştaki genel rollerini daha iyi dengelemek adına PvP hasarlarını düşürüyoruz. Şifacılar etkili kalmaya devam etmeli ancak hasarları, güçlü bir hayatta kalma sağlarken aynı zamanda saf hasar rollerini geride bırakmamalıdır.",
+                                changes: [
+                                    { name: "PvP Hasarı:", detail: "Şifacıların PvP'deki hasarı %25 oranında azaltıldı." }
+                                ]
+                            },
+                            {
+                                title: "Çift Elli Kılıç (Two-Handed Sword)",
+                                icon: "fas fa-gavel",
+                                intro: "Çift Elli Kılıç şu anda parti içeriklerinde diğer DPS seçeneklerini o kadar geride bırakıyor ki, sınıf ve dizilim çeşitliliğini sınırlandırıyor. Bu değişiklik, Çift Elli Kılıç'ın güçlü bir hasar seçeneği olarak kalmasını sağlarken, Öfke Çarpması'nın (Fury Impact) koordineli grup oyunlarındaki baskınlığını azaltmayı amaçlıyor. Amacımız, parti içeriklerinde tek bir silahın veya yeteneğin varsayılan seçenek haline gelmeden tüm DPS rollerinin anlamlı bir şekilde rekabet edebilmesini sağlamaktır.",
+                                changes: [
+                                    { name: "Öfke Çarpması (Fury Impact):", detail: "PvE'deki maksimum HP hasarı azaltıldı." }
+                                ]
+                            },
+                            {
+                                title: "Tank",
+                                icon: "fas fa-shield-alt",
+                                intro: "Tank deneyimini geliştirmeyi amaçlayan, özellikle son dengeleme değişikliklerinin hem solo hem de grup oyununu nasıl etkilediğini gözden geçirdikten sonra çeşitli ayarlamalar yapıyoruz. Bu, daha sağlıklı bir PvP dengesi sağlarken tankların PvE'de daha iyi hissetmelerine yardımcı olacaktır.",
+                                changes: [
+                                    { name: "Temel Saldırılar:", detail: "Kılıç ve Kalkan temel saldırı hasarı %100 artırıldı." },
+                                    { name: "Cesur Kesiş (Valiant Slash):", detail: "PvE çarpanı artırıldı. Bu değişiklik, tankların solo olarak daha etkili farm yapmalarına ve grup PvE içeriklerine daha anlamlı katkıda bulunmalarına yardımcı olmak için tasarlanmıştır." }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        sectionTitle: "Genel Güncellemeler",
+                        icon: "fas fa-list-ul",
+                        listInfo: [
+                            { title: "Kaçınma (Dodge) Hasar Görmezlik Süresi", desc: "Kaçınma hareketi artık 0.5 saniyelik hasar görmezlik (invulnerability) sağlıyor. 1.5 saniyelik hasar görmezlik sağlayan önceki sürüm çok güçlüydü ve savaşta çok fazla güvenlik yaratıyordu. Ancak kaçınma zamanlamasının önemli bir yetenek ustalığı biçimi olduğunun da farkındayız. Oyuncular düşmanın anlık hasar pencerelerini tahmin ederken ve iyi zamanlanmış savunma oyunlarıyla karşılık verirken kontrole sahip olmalıdır. Bu ayarlama, kaçınmayı aşırı güçlü bir duruma döndürmeden anlamlı bir karşı oyun hissiyatını geri getiriyor." },
+                            { title: "PvP Parşömenleri (Scrolls) Kaldırıldı", desc: "Sadece 10 dakikalık kullanım için 10M tutan PvP parşömenleri, PvP'ye daha rahat katılmak isteyen oyuncular için gereksiz bir engel yaratıyordu. Bu sistemi eklerken hedefi ıskaladık. PvP erişilebilir ve rekabetçi hissettirmeli, oyuncuları katılmaktan caydıran ağır bir yinelenen maliyetin arkasına kilitlenmemeli. Bu nedenle, bu parşömenler artık satın alınamaz. Daha önce PvP Parşömeni satın almış olan oyuncular, bu yama ile birlikte paralarını geri alacaklar." }
+                        ]
+                    },
+                    {
+                        sectionTitle: "Kapanış Notları",
+                        icon: "fas fa-bullhorn",
+                        intro: "Bu ara yama (hotfix), şu anda geliştirilmekte olan daha büyük güncellemeyi hazırlamaya devam ederken; dinlemeye, yanıt vermeye ve savaş hissini iyileştirmeye odaklanıyor.<br><br>PvP dengesinin Quinfall'un uzun vadeli sağlığının en önemli parçalarından biri olduğunu biliyoruz. Amacımız, oyuncuların güçlü, duyarlı ve sınıflarında ustalaştıkları için ödüllendirilmiş hissetmelerine olanak tanırken rekabetçi bütünlüğü korumaktır."
+                    }
+                ]
+            }
+        }
+    },
+    {
         id: '0.28',
         versionBadge: 'v1.0.0.28',
         date: '5 May 2026',
