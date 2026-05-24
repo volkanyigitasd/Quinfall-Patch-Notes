@@ -1,5 +1,410 @@
 const patchList = [
     {
+        id: '0.29',
+        versionBadge: 'v1.0.0.29',
+        date: '24 May 2026',
+        data: {
+            en: {
+                title: "The Quinfall - Patch v1.0.0.29",
+                intro: "Patch 1.0.0.29 is focused on building a stronger foundation for future balance and design work.<br><br>In the previous patch, many systems scaled in a way that made tuning extremely difficult. Because several values grew exponentially or relied too heavily on flat bonuses, small balance adjustments could create massive outliers. Changing basic numbers often caused unexpected spikes in damage, defense, healing, or survivability, which made the game harder to balance cleanly.<br><br>This patch moves several core systems toward percentage-based scaling and clearer class identity. The goal is to make builds easier to understand, easier to adjust, and easier to design around moving forward.<br><br>Armor weight, attributes, gems, talismans, stamina, and critical damage have all been updated with that goal in mind. Players should have more meaningful build choices, while the design team should have a more stable foundation for future balance passes.",
+                ui: {
+                    devNoteTitle: "Dev Note",
+                    devCommentaryTitle: "Developer Commentary"
+                },
+                sections: [
+                    {
+                        sectionTitle: "Item Converter",
+                        icon: "fas fa-exchange-alt",
+                        blocks: [
+                            {
+                                title: "Item Converter",
+                                icon: "fas fa-sync",
+                                intro: "Allows you to take any armor or weapon and convert it into a different armor weight or weapon type while keeping: Enhancement level, Gems, Grade, Talisman bonus.<br><br>Each player will be given x4 Item Converters when the patch launches.",
+                                devNote: "Many players invest heavily into a gear set or weapon, then eventually grow bored of that weapon or class. This game should encourage players to try multiple gear sets and weapon types. The Item Converter is intended to help players who have invested in one 'main class' carry that investment into a new class or build without having to start over completely."
+                            }
+                        ]
+                    },
+                    {
+                        sectionTitle: "Foundational Changes",
+                        icon: "fas fa-cogs",
+                        blocks: [
+                            {
+                                title: "Attributes",
+                                icon: "fas fa-chart-bar",
+                                devNote: "Attributes were in a strange place. Because they gave flat values, the classes that should have benefited the least from certain attributes often benefited the most. This led to builds like 'muscle wizard' allocations, where players could ignore damage-focused stats and still perform well by stacking survivability (e.g., 0 INT / 50 DEF / 100 CON / 50 RES). Going forward, players who want to deal damage should need to invest into damage through their attributes.",
+                                changes: [
+                                    { name: "Percentage Scaling:", detail: "Stats now scale by percentage instead of flat values. At 0 points you have a 75% modifier. At 48 points you have an 87% modifier. At 100 points you have a 100% modifier." },
+                                    { name: "Equipment Display:", detail: "Equipment values will still display their base value before calculations. In some cases, the final value will be higher; in other cases, it will be lower." },
+                                    { name: "Free Reset:", detail: "Stat reset no longer costs any currency or fee for only 1 week. The fee display of 5m is a visual issue, it is free." }
+                                ]
+                            },
+                            {
+                                title: "Armor Weight Sets",
+                                icon: "fas fa-shield-alt",
+                                devNote: "The original goal of armor weight was to create meaningful armor diversity. However, due to how each armor set was buffed or nerfed, that goal was missed. Outside of a few exceptions, most players using the same weapon class ended up using the same armor weight. The goal of this rework is to increase customization and give players more agency in how they equip their character.",
+                                changes: [
+                                    { name: "Heavy Armor:", detail: "+10% Physical DP, +10% Magical DP, +10% Critical Chance Defense modifier, +5% HP, -60% Mana, -30% Magical AP, -30% Physical AP, -10% Critical Damage modifier." },
+                                    { name: "Light Armor:", detail: "+5% Physical AP, +5% Magical DP, +5% Critical Chance Defense modifier, +5% Critical Chance, -30% Mana, -20% Magical AP. Weight limit adjusted to 20–31." },
+                                    { name: "Robe Armor:", detail: "Medium chest now has a 19 weight maximum (down from 22). +15% Critical Chance, +15% Mana, +20% Magical AP, +20% Physical AP, -10% HP." },
+                                    { name: "Weight Modifiers:", detail: "All level 100 characters received an Armor Weight Modifier material as a gift (claimable from mailbox). Weight capacity boosters are temporarily 50% off." }
+                                ]
+                            },
+                            {
+                                title: "Talismans",
+                                icon: "fas fa-gem",
+                                devNote: "Talismans were creating very few meaningful decisions, while also being overly complex for new players. Talisman sets are now the same regardless of armor rarity. For example, purple and gold pieces can now be equipped together and still count toward the same set bonus.",
+                                changes: [
+                                    { name: "Set Consistency:", detail: "Set bonuses from Blue and Purple equipment have been replaced with the Legendary set bonus effect. All talismans now grant only the Legendary set bonus effects." },
+                                    { name: "Updated Sets:", detail: "Set bonuses have been heavily adjusted. For instance: Seraphic Grace (2pc: +20 HP Regen, 3pc: +5% MP, 4pc: +3 Speed), Divine Harmony (2pc: +20 MP Regen, 3pc: +5% Phys DP, 4pc: +10% Heal Multi), etc." }
+                                ]
+                            },
+                            {
+                                title: "Gems",
+                                icon: "fas fa-gem",
+                                devNote: "Gems previously gave flat values. This meant they often gave the most value to classes that were weak in those stats, while providing relatively smaller gains to classes that had already invested into them. With percentage-based values, gems should now magnify your strengths instead of simply covering your weaknesses.",
+                                changes: [
+                                    { name: "AP Gems:", detail: "T1: +0.2% | T2: +0.3% | T3: +0.4%" },
+                                    { name: "DP Gems:", detail: "T1: +0.3% | T2: +0.45% | T3: +0.6%" },
+                                    { name: "HP & MP Gems:", detail: "T1: +0.35% | T2: +0.47% | T3: +0.70%" },
+                                    { name: "Regen Gems:", detail: "T1: +10 | T2: +15 | T3: +20" },
+                                    { name: "Crit Chance:", detail: "T1: +0.69% | T2: +1.035% | T3: +1.38%" },
+                                    { name: "Crit Def:", detail: "T1: +0.345% | T2: +0.517% | T3: +0.69%" }
+                                ]
+                            },
+                            {
+                                title: "Stamina Rework",
+                                icon: "fas fa-running",
+                                devNote: "Stamina was an overly punishing system. We have adjusted the regen rate and regen delay to give players more opportunities to dodge, jump, and roll. Because bunny hopping has become so prevalent, jumping now has a small stamina cost.",
+                                changes: [
+                                    { name: "Regeneration:", detail: "Stamina regen delay reduced by 50% (from 3s to 1.5s). Regen rate doubled and increased by an additional 30%." },
+                                    { name: "Jumping Cost:", detail: "Jumping now costs 3 stamina (10 in combat, 5 out of combat)." }
+                                ]
+                            },
+                            {
+                                title: "Critical Damage Rebalance",
+                                icon: "fas fa-bolt",
+                                devNote: "Some weapons should be encouraged to build full damage, while others should be encouraged to invest into Critical Chance and Critical Damage. In the old system, nearly every DPS weapon wanted Critical Damage as much as, or more than, AP. Weapons intended to have higher sustained damage have had their Critical Damage multipliers reduced more heavily. Weapons intended to rely on burst damage and critical hits have been affected less.",
+                                changes: [
+                                    { name: "Base Multipliers:", detail: "Warhammer: 1.21x | Two-Handed Sword: 1.22x | Dual Axes: 1.22x | Daggers: 1.43x | Sword and Shield: 1.23x | Spear: 1.28x | Arcane Staff: 1.3x | Life Staff: 1.1x | Crossbow: 1.43x | Bow: 1.3x" },
+                                    { name: "Cap:", detail: "Maximum critical chance capped at 100%." }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        sectionTitle: "Class Balance",
+                        icon: "fas fa-balance-scale",
+                        blocks: [
+                            {
+                                title: "Necromancer (Arcane Staff)",
+                                icon: "fas fa-skull",
+                                devNote: "Necromancer has been difficult to balance because it was extremely tanky, dealt high damage, and brought powerful debuffs at the same time. Going forward, Necromancer should still be able to access those strengths, but not all at once. Different armor weights should now support different Necromancer playstyles.",
+                                changes: [
+                                    { name: "Scaling:", detail: "Changed from 7.5% HP / 50% AP to 4% HP / 90% AP." },
+                                    { name: "Tornado:", detail: "Player pull range reduced." },
+                                    { name: "Agony Wall:", detail: "Now shreds both Physical DP and Magical DP. Slow increased from 30% for 2s to 60% for 3s. No longer cleanses buffs. Cast range significantly reduced. Damage per point reduced from 5% to 3.6%." },
+                                    { name: "Grave Legion (Skeletons):", detail: "Now remove buffs from targets they hit. Movement and spawn speed increased. Cooldown reduced by 0.10s per point; damage increased by 10% per point." }
+                                ]
+                            },
+                            {
+                                title: "Healer (Life Staff)",
+                                icon: "fas fa-heart",
+                                devNote: "Healers were in an awkward spot. They had limited agency due to long cooldowns, but were still extremely difficult to kill. We want healers to feel more active and rewarding to play, while creating more counterplay.",
+                                changes: [
+                                    { name: "Base Adjustments:", detail: "Life Staff skill cooldown durations and healing amounts adjusted. MP values added to Life Staff and some accessories." },
+                                    { name: "MP Changes:", detail: "Earring MP value increased by 20%. HP/MP potion prices and craftable potion values adjusted." },
+                                    { name: "Spirit Wanderer:", detail: "Mana Tide: CD 15s → 7s, Damage/lvl 5% → 3%, Heal/lvl 2% → 3%. Soul Beacon: CD 15s → 10s. Soul Cascade: CD 6.5s → 4s, No longer grants Crit Chance, Heal/lvl 0.4% → 1%. Realm Shift: CD 30s → 25s. Divine Intervention: CD 80s → 45s." },
+                                    { name: "Luminary:", detail: "Divine Beam and Dual Surge now deal 200% increased PvE damage." }
+                                ]
+                            },
+                            {
+                                title: "Sword & Shield",
+                                icon: "fas fa-shield-alt",
+                                devNote: "Sword and Shield has been a dominant part of the meta for the past month. These changes are intended to reduce its most extreme moments while keeping the core class intact.",
+                                changes: [
+                                    { name: "Iron-Warden:", detail: "Relentless Charge: DP gain reduced to 3% per stack. Rampart: Defense scaling reduced to 3%, Buff duration reduced to 6 seconds. Rallying Cry: Self bonus reduced to 15%, Ally bonus increased from 15% to 20%." },
+                                    { name: "Vanguard:", detail: "Shield Bash: Grants 10% defense for 3 seconds. Dread Chain: Applies 30% armor reduction for 3 seconds. Reckoning: Deals 60% extra bonus damage in PvE. Valiant Slash: PvE damage set to 300%." },
+                                    { name: "General:", detail: "Skill damage inconsistency based on stated formula has been fixed. Damage output significantly improved." }
+                                ]
+                            },
+                            {
+                                title: "Two-Handed Sword",
+                                icon: "fas fa-gavel",
+                                devNote: "While Two-Handed Sword has been a dominant force, we don’t believe its recent strength is entirely tied to its core mechanics. Instead of nerfing the entire class, we’re addressing the most impactful outliers while keeping the class’s identity intact.",
+                                changes: [
+                                    { name: "Frenzy:", detail: "Critical Chance removed. CD changed to 15s. Scaling reduced from 0.8% to 0.6% per point. Fixed a bug where healing could occur when hitting targets at 0s." },
+                                    { name: "Fury Impact:", detail: "Bleed damage on creatures reduced." },
+                                    { name: "Last Stand:", detail: "Shield reduced from 0.5% to 0.25%. CD reduced to 40s. Extra damage per point reduced from 25% to 13%." }
+                                ]
+                            },
+                            {
+                                title: "Warhammer",
+                                icon: "fas fa-hammer",
+                                devNote: "While we believe Hammer is in a much healthier state after the recent changes, it still needed an extra push to truly compete with the more popular classes. With these buffs, we’re giving it the tools it needs to take another step forward.",
+                                changes: [
+                                    { name: "Demolisher:", detail: "Grasp: CD reduced to 8s, Applies 50% slow for 2s, Hitbox increased. Judgement: Damage set to 180%. Steel Vortex: CD reduced to 6s, Base value increased by 40%, Now deals 50% increased damage in PvE." },
+                                    { name: "Brawler:", detail: "Stone Arena: CD reduced to 40s." }
+                                ]
+                            },
+                            {
+                                title: "Crossbow",
+                                icon: "fas fa-crosshairs",
+                                devNote: "The Crossbow Hunter skill tree has struggled to find a place in the meta since the early days of the game. With these changes, we’re aiming to strengthen its identity and help it stand alongside the more popular classes and builds.",
+                                changes: [
+                                    { name: "Hunter Base:", detail: "Auto attack damage reduced by 10%. Hunter Instinct: Duration 3s → 5s." },
+                                    { name: "Hunter Skills:", detail: "Overkill: CD 12s, Atk Speed 20%, Move Speed 15% (per level 0.35%). Multi-Shot: Base Dmg 60% → 95%, Move Speed 20% → 35%, Dmg/pt 2% → 3%. Quick Step: Init Dmg 50% → 65%. Bolt Hall: Dmg 160% → 130%, Move Speed Reduct 40% → 70%, Phys Def Reduct 20% → 25%. Doom Barrage: Dmg 200% → 275%, CD 70s → 60s. Cleanse Speed: Base 20%, Scaling 2% → 1.5%." }
+                                ]
+                            },
+                            {
+                                title: "Dual Axes",
+                                icon: "fas fa-fist-raised",
+                                devNote: "Dual Axes are currently viewed as extremely strong in EU and extremely weak in NA. We plan to continue evaluating.",
+                                changes: [
+                                    { name: "Skills:", detail: "Rage Burst: Explosion AoE increased by 50%, CD increased by 2s. Axe Throw: Throw speed increased by 50%. Berserk: CD increased to 22s, Duration 7s → 5s, Movement speed 50% → 40%. Battle Roar: Shield reduced from 10% to 5%." },
+                                    { name: "Passive:", detail: "Max stack count reduced from 50 to 35." }
+                                ]
+                            },
+                            {
+                                title: "Spear",
+                                icon: "fas fa-bolt",
+                                devNote: "The Lance Master skill tree was underperforming compared to the Legionnaire skill tree. Therefore, we are introducing several changes to better integrate it into the meta. The Legionnaire skill tree has received feedback regarding excessive stunlock, so stun duration is being slightly reduced.",
+                                changes: [
+                                    { name: "Lance Master:", detail: "Rule: Base damage 200% → 250%. Spearfall: Base damage 200% → 250%. Mirage: Base damage 200% → 230%. Face-Off: Base damage 200% → 250%." },
+                                    { name: "Legionnaire:", detail: "Ruthless Dive: CC duration reduced from 2s to 1.25s." }
+                                ]
+                            },
+                            {
+                                title: "Daggers",
+                                icon: "fas fa-khanda",
+                                devNote: "Following our testing, it has been identified that Dagger damage was slightly higher than intended. As a result, this adjustment has been made to ensure balance.",
+                                changes: [
+                                    { name: "Venom Burst:", detail: "Damage per level reduced from 6% to 5%." }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        sectionTitle: "General Changes",
+                        icon: "fas fa-list-ul",
+                        listInfo: [
+                            { title: "Fall Animation", desc: "Fall animation (CC effect) shortened and sped up." },
+                            { title: "Trio Arena", desc: "Equipment can no longer be changed during 3v3 Trio Arena." },
+                            { title: "PvP Scrolls", desc: "PVP defense scroll removed. Players can right-click existing scrolls in inventory to receive the refund value." },
+                            { title: "Board Quests", desc: "Town quests now award Tera Fragments. More quest adjustments and new quests coming soon." },
+                            { title: "EXP Scroll", desc: "Character EXP Scroll price from Pelthera statue reduced by 35% (1.500.000 1/hr)." },
+                            { title: "Shield Cap", desc: "Shield max value capped at 50% of max HP." },
+                            { title: "Localization", desc: "Some translation errors have been fixed." }
+                        ]
+                    },
+                    {
+                        sectionTitle: "Closing Notes",
+                        icon: "fas fa-bullhorn",
+                        intro: "This is only one step in our ongoing effort to improve the overall gameplay experience. Going forward, we will continue monitoring class performance, game balance, and player feedback closely, while making adjustments that not only meet the game’s needs, but also reflect the expectations and wishes of our community.<br><br>We want Quinfall to become a game that players can truly enjoy spending time in, and future updates will continue pushing the game in that direction with stronger improvements, healthier balance changes, and more enjoyable gameplay experiences.<br><br>Some areas may still need further refinement, and we are fully committed to continuing that work in the updates ahead. Your feedback, support, and passion for the game play a huge role in shaping these changes, and we sincerely thank you for continuing to support us throughout this journey.<br><br>We’ll continue working hard to bring you even better patches and improvements in the future."
+                    }
+                ]
+            },
+            tr: {
+                title: "The Quinfall - Yama v1.0.0.29",
+                intro: "Yama 1.0.0.29, gelecekteki denge ve tasarım çalışmaları için daha güçlü bir temel oluşturmaya odaklanıyor.<br><br>Önceki yamada birçok sistem, ayarlama yapmayı son derece zorlaştıracak şekilde ölçekleniyordu. Çeşitli değerler katlanarak büyüdüğü veya sabit bonuslara çok fazla dayandığı için, küçük denge ayarlamaları devasa tutarsızlıklar yaratabiliyordu. Temel sayıları değiştirmek genellikle hasar, savunma, iyileştirme veya hayatta kalmada beklenmedik sıçramalara neden olarak oyunu temiz bir şekilde dengelemeyi zorlaştırıyordu.<br><br>Bu yama, birçok temel sistemi yüzdesel ölçeklendirmeye ve daha net sınıf kimliğine taşıyor. Amaç; dizilimleri (build) daha anlaşılır, daha kolay ayarlanabilir ve geleceğe yönelik daha rahat tasarlanabilir hale getirmektir.<br><br>Zırh ağırlığı, nitelikler (attributes), taşlar (gems), tılsımlar (talismans), dayanıklılık (stamina) ve kritik hasar bu amaç göz önünde bulundurularak güncellendi. Oyuncular artık dizilimlerinde daha anlamlı seçimlere sahip olurken, tasarım ekibi de gelecekteki dengeleme aşamaları için daha istikrarlı bir temele sahip olacak.",
+                ui: {
+                    devNoteTitle: "Geliştirici Notu",
+                    devCommentaryTitle: "Geliştiricinin Yorumu"
+                },
+                sections: [
+                    {
+                        sectionTitle: "Eşya Dönüştürücü",
+                        icon: "fas fa-exchange-alt",
+                        blocks: [
+                            {
+                                title: "Eşya Dönüştürücü (Item Converter)",
+                                icon: "fas fa-sync",
+                                intro: "Herhangi bir zırh veya silahı alıp farklı bir zırh ağırlığına veya silah türüne dönüştürmenize olanak tanır. Korunan özellikler: Geliştirme (Enhancement) seviyesi, Taşlar (Gems), Derece (Grade), Tılsım (Talisman) bonusu.<br><br>Yama yayınlandığında her oyuncuya 4 adet Eşya Dönüştürücü verilecektir.",
+                                devNote: "Birçok oyuncu bir ekipman setine veya silaha yoğun yatırım yapıyor, ardından eninde sonunda o silahtan veya sınıftan sıkılıyor. Bu oyun, oyuncuları birden fazla ekipman setini ve silah türünü denemeye teşvik etmelidir. Eşya Dönüştürücü, bir 'ana sınıfa' yatırım yapmış oyuncuların bu yatırımlarını tamamen baştan başlamak zorunda kalmadan yeni bir sınıfa veya dizilime taşımasına yardımcı olmayı amaçlamaktadır."
+                            }
+                        ]
+                    },
+                    {
+                        sectionTitle: "Temel Sistem Değişiklikleri",
+                        icon: "fas fa-cogs",
+                        blocks: [
+                            {
+                                title: "Nitelikler (Attributes)",
+                                icon: "fas fa-chart-bar",
+                                devNote: "Nitelikler tuhaf bir durumdaydı. Sabit değerler verdikleri için, belirli niteliklerden en az fayda sağlaması gereken sınıflar genellikle en çok faydayı sağlıyordu. Bu durum, oyuncuların hasar odaklı istatistikleri görmezden gelip hayatta kalma özelliklerini (ör. 0 INT / 50 DEF / 100 CON / 50 RES) biriktirerek hala iyi performans gösterebildiği 'kaslı büyücü (muscle wizard)' gibi dizilimlere yol açtı. Bundan sonra, hasar vermek isteyen oyuncuların nitelikleri aracılığıyla hasara yatırım yapması gerekecek.",
+                                changes: [
+                                    { name: "Yüzdesel Ölçeklenme:", detail: "İstatistikler artık sabit değerler yerine yüzdesel olarak ölçekleniyor. 0 puanda %75 değiştiriciye (modifier) sahip olursunuz. 48 puanda %87 değiştiriciye, 100 puanda ise %100 değiştiriciye sahip olursunuz." },
+                                    { name: "Ekipman Görünümü:", detail: "Ekipman değerleri, hesaplamalardan önceki temel değerlerini göstermeye devam edecektir. Bazı durumlarda nihai değer daha yüksek; diğerlerinde daha düşük olacaktır." },
+                                    { name: "Ücretsiz Sıfırlama:", detail: "Stat sıfırlama işlemi 1 hafta boyunca tamamen ücretsiz olacak. 5m'lik ücret gösterimi görsel bir hatadır, işlem ücretsizdir." }
+                                ]
+                            },
+                            {
+                                title: "Zırh Ağırlık Setleri",
+                                icon: "fas fa-shield-alt",
+                                devNote: "Zırh ağırlığının asıl amacı anlamlı bir zırh çeşitliliği yaratmaktı. Ancak zırh setlerinin aldığı güçlendirme ve zayıflatmalar nedeniyle bu hedef ıskalandı. Çeşitli istisnalar dışında, aynı silah sınıfını kullanan çoğu oyuncu aynı zırh ağırlığını kullanır oldu. Bu yeniden çalışmanın amacı, kişiselleştirmeyi artırmak ve oyunculara karakterlerini donatırken daha fazla kontrol sağlamaktır.",
+                                changes: [
+                                    { name: "Ağır Zırh (Heavy):", detail: "+%10 Fiziksel DP, +%10 Büyü DP, +%10 Kritik Şans Savunma çarpanı, +%5 HP, -%60 Mana, -%30 Büyü AP, -%30 Fiziksel AP, -%10 Kritik Hasar çarpanı." },
+                                    { name: "Hafif Zırh (Light):", detail: "+%5 Fiziksel AP, +%5 Büyü DP, +%5 Kritik Şans Savunma çarpanı, +%5 Kritik Şans, -%30 Mana, -%20 Büyü AP. Ağırlık limiti 20-31 arasına ayarlandı." },
+                                    { name: "Kumaş Zırh (Robe):", detail: "Orta (Medium) göğüs zırhı artık maksimum 19 ağırlığa sahip (22'den düştü). +%15 Kritik Şans, +%15 Mana, +%20 Büyü AP, +%20 Fiziksel AP, -%10 HP." },
+                                    { name: "Ağırlık Değiştiriciler:", detail: "Tüm 100. seviye karakterlere hediye olarak bir Zırh Ağırlık Değiştirici (Armor Weight Modifier) materyali gönderildi (postadan alınabilir). Ağırlık kapasitesi artırıcılar da geçici olarak %50 indirimli." }
+                                ]
+                            },
+                            {
+                                title: "Tılsımlar (Talismans)",
+                                icon: "fas fa-gem",
+                                devNote: "Tılsımlar hem çok az anlamlı karar sunuyor hem de yeni oyuncular için aşırı karmaşık oluyordu. Tılsım setleri artık zırh nadirliğinden bağımsız olarak aynı. Örneğin, mor ve altın parçalar artık birlikte kuşanılabilir ve aynı set bonusuna dahil edilebilir.",
+                                changes: [
+                                    { name: "Set Tutarlılığı:", detail: "Mavi ve Mor ekipmanlardan gelen set bonusları, Efsanevi (Legendary) set bonusu efektiyle değiştirildi. Tüm tılsımlar artık yalnızca Efsanevi set bonusu efektlerini veriyor." },
+                                    { name: "Güncellenen Setler:", detail: "Set bonusları büyük ölçüde ayarlandı. Örneğin: Seraphic Grace (2 parça: +20 HP Yenilenmesi, 3 parça: +%5 MP, 4 parça: +3 Hız), Divine Harmony (2 parça: +20 MP Yenilenmesi, 3 parça: +%5 Fiziksel DP, 4 parça: +%10 İyileştirme Çarpanı) vb." }
+                                ]
+                            },
+                            {
+                                title: "Taşlar (Gems)",
+                                icon: "fas fa-gem",
+                                devNote: "Taşlar daha önce sabit değerler veriyordu. Bu, o istatistiklerde zayıf olan sınıflara en fazla değeri sağlarken, bu istatistiklere zaten yatırım yapmış sınıflara nispeten daha küçük kazançlar sağladığı anlamına geliyordu. Yüzdesel değerlerle taşlar artık sadece zayıflıklarınızı örtmek yerine güçlü yönlerinizi büyütmeli.",
+                                changes: [
+                                    { name: "AP Taşları:", detail: "Seviye 1: +%0.2 | Seviye 2: +%0.3 | Seviye 3: +%0.4" },
+                                    { name: "DP Taşları:", detail: "Seviye 1: +%0.3 | Seviye 2: +%0.45 | Seviye 3: +%0.6" },
+                                    { name: "HP ve MP Taşları:", detail: "Seviye 1: +%0.35 | Seviye 2: +%0.47 | Seviye 3: +%0.70" },
+                                    { name: "Yenilenme Taşları:", detail: "Seviye 1: +10 | Seviye 2: +15 | Seviye 3: +20" },
+                                    { name: "Kritik Şans:", detail: "Seviye 1: +%0.69 | Seviye 2: +%1.035 | Seviye 3: +%1.38" },
+                                    { name: "Kritik Savunma:", detail: "Seviye 1: +%0.345 | Seviye 2: +%0.517 | Seviye 3: +%0.69" }
+                                ]
+                            },
+                            {
+                                title: "Dayanıklılık (Stamina) Yenilemesi",
+                                icon: "fas fa-running",
+                                devNote: "Dayanıklılık çok cezalandırıcı bir sistemdi. Oyunculara kaçınma, zıplama ve yuvarlanma için daha fazla fırsat vermek amacıyla yenilenme hızını ve gecikmesini ayarladık. Sürekli zıplamak (bunny hopping) çok yaygın hale geldiği için zıplamak artık küçük bir dayanıklılık bedeline sahip.",
+                                changes: [
+                                    { name: "Yenilenme (Regeneration):", detail: "Dayanıklılık yenilenme gecikmesi %50 azaltıldı (3 saniyeden 1.5 saniyeye). Yenilenme hızı iki katına çıkarıldı ve ek olarak %30 daha artırıldı." },
+                                    { name: "Zıplama Bedeli:", detail: "Zıplamak artık 3 dayanıklılık tüketiyor (Savaş içinde 10, savaş dışında 5)." }
+                                ]
+                            },
+                            {
+                                title: "Kritik Hasar Dengelemesi",
+                                icon: "fas fa-bolt",
+                                devNote: "Bazı silahlar tam hasar dizilimi yapmaya teşvik edilmeli, diğerleri ise Kritik Şans ve Kritik Hasara yatırım yapmaya teşvik edilmelidir. Eski sistemde, neredeyse her DPS silahı Kritik Hasarı AP kadar veya daha fazla istiyordu. Daha yüksek sürekli hasara sahip olması amaçlanan silahların Kritik Hasar çarpanları daha fazla düşürüldü. Anlık hasar ve kritik vuruşlara dayanması amaçlanan silahlar daha az etkilendi.",
+                                changes: [
+                                    { name: "Temel Çarpanlar:", detail: "Savaş Çekici: 1.21x | Çift Elli Kılıç: 1.22x | Çift Balta: 1.22x | Hançer: 1.43x | Kılıç ve Kalkan: 1.23x | Mızrak: 1.28x | Arkan Asası: 1.3x | Yaşam Asası: 1.1x | Arbalet: 1.43x | Yay: 1.3x" },
+                                    { name: "Sınır (Cap):", detail: "Maksimum kritik şans sınırı %100 olarak belirlendi." }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        sectionTitle: "Sınıf Dengelemeleri",
+                        icon: "fas fa-balance-scale",
+                        blocks: [
+                            {
+                                title: "Necromancer (Büyücü)",
+                                icon: "fas fa-skull",
+                                devNote: "Necromancer'ı dengelemek zordu çünkü aşırı derecede tank kapasitesine sahipti, yüksek hasar veriyordu ve aynı zamanda güçlü zayıflatmalar uyguluyordu. Bundan sonra, Necromancer bu güçlü yönlere hala erişebilmeli ancak hepsine aynı anda değil. Farklı zırh ağırlıkları artık farklı Necromancer oyun tarzlarını destekleyecek.",
+                                changes: [
+                                    { name: "Ölçeklenme:", detail: "%7.5 HP / %50 AP'den %4 HP / %90 AP'ye değiştirildi." },
+                                    { name: "Hortum (Tornado):", detail: "Oyuncu çekme menzili azaltıldı." },
+                                    { name: "Izdırap Duvarı (Agony Wall):", detail: "Artık hem Fiziksel DP'yi hem de Büyü DP'sini kırıyor. Yavaşlatma etkisi 2 saniyeliğine %30'dan 3 saniyeliğine %60'a çıkarıldı. Artık güçlendirmeleri (buff) temizlemiyor. Kullanım menzili önemli ölçüde azaltıldı. Puan başına hasar %5'ten %3.6'ya düşürüldü." },
+                                    { name: "Mezar Lejyonu (İskeletler):", detail: "Artık vurdukları hedeflerin güçlendirmelerini siliyorlar. Hareket ve doğma (spawn) hızı artırıldı. Bekleme süresi puan başına 0.10s azaltıldı; hasar puan başına %10 artırıldı." }
+                                ]
+                            },
+                            {
+                                title: "Şifacı (Yaşam Asası)",
+                                icon: "fas fa-heart",
+                                devNote: "Şifacılar garip bir noktadaydı. Uzun bekleme süreleri nedeniyle etki alanları kısıtlıydı ancak öldürülmeleri yine de son derece zordu. Şifacıların daha aktif hissettirmesini ve oynaması daha ödüllendirici olmasını isterken aynı zamanda rakipler için de bir karşı oyun imkanı yaratmak istiyoruz.",
+                                changes: [
+                                    { name: "Temel Ayarlamalar:", detail: "Yaşam Asası yetenek bekleme süreleri ve iyileştirme miktarları ayarlandı. Yaşam Asası'na ve bazı takılara MP (Mana) değerleri eklendi." },
+                                    { name: "MP Değişiklikleri:", detail: "Küpe MP değeri %20 artırıldı. NPC'lerdeki HP/MP iksiri fiyatları ve üretilebilir iksir değerleri ayarlandı." },
+                                    { name: "Ruh Gezgini (Spirit Wanderer):", detail: "Mana Akıntısı (Mana Tide): Bekleme Süresi (CD) 15s → 7s, Hasar/Seviye %5 → %3, İyileştirme/Seviye %2 → %3. Ruh Feneri (Soul Beacon): CD 15s → 10s. Ruh Çağlayanı (Soul Cascade): CD 6.5s → 4s, Artık isabet halinde Kritik Şans vermiyor, İyileştirme/Seviye %0.4 → %1. Diyar Kayması (Realm Shift): CD 30s → 25s. İlahi Müdahale (Divine Intervention): CD 80s → 45s." },
+                                    { name: "Işık Getiren (Luminary):", detail: "İlahi Işın (Divine Beam) ve Çift Dalga (Dual Surge) artık PvE'de %200 artırılmış hasar veriyor." }
+                                ]
+                            },
+                            {
+                                title: "Kılıç ve Kalkan (Sword & Shield)",
+                                icon: "fas fa-shield-alt",
+                                devNote: "Kılıç ve Kalkan geçtiğimiz ay boyunca metanın baskın bir parçası oldu. Bu değişiklikler, temel sınıf yapısını sağlam tutarken sınıfın en aşırı anlarını törpülemeyi amaçlamaktadır.",
+                                changes: [
+                                    { name: "Demir Muhafız (Iron-Warden):", detail: "Amansız Hücum (Relentless Charge): DP kazancı yük (stack) başına %3'e düşürüldü. Siper (Rampart): Savunma ölçeklenmesi %3'e düşürüldü, Güçlendirme (Buff) süresi 6 saniyeye düşürüldü. Toplanma Çığlığı (Rallying Cry): Kendine verilen bonus %15'e düşürüldü, Müttefik bonusu %15'ten %20'ye çıkarıldı." },
+                                    { name: "Öncü (Vanguard):", detail: "Kalkan Darbesi (Shield Bash): 3 saniyeliğine %10 savunma sağlar. Dehşet Zinciri (Dread Chain): 3 saniyeliğine %30 zırh kırma uygular. Hesaplaşma (Reckoning): PvE'de %60 ekstra bonus hasar verir. Cesur Kesiş (Valiant Slash): PvE hasarı %300 olarak ayarlandı." },
+                                    { name: "Genel:", detail: "Yetenek hasarı tutarsızlıkları (belirtilen formüle dayalı) düzeltildi. Hasar çıkışı önemli ölçüde iyileştirildi." }
+                                ]
+                            },
+                            {
+                                title: "Çift Elli Kılıç (Two-Handed Sword)",
+                                icon: "fas fa-gavel",
+                                devNote: "Çift Elli Kılıç oyunu domine eden bir güç olsa da, son dönemdeki gücünün tamamen temel mekaniklerine bağlı olduğuna inanmıyoruz. Tüm sınıfı zayıflatmak yerine, sınıfın kimliğini sağlam tutarak en çok etki yaratan aşırılıkları gideriyoruz.",
+                                changes: [
+                                    { name: "Cinnet (Frenzy):", detail: "Kritik Şans kaldırıldı. CD 15s olarak değiştirildi. Ölçeklenme puan başına %0.8'den %0.6'ya düşürüldü. Hedeflere 0s'de vurulduğunda iyileşme oluşmasına neden olan bir hata düzeltildi." },
+                                    { name: "Öfke Çarpması (Fury Impact):", detail: "Yaratıklara verilen kanama hasarı azaltıldı." },
+                                    { name: "Son Direniş (Last Stand):", detail: "Kalkan %0.5'ten %0.25'e düşürüldü. CD 40s'ye düşürüldü. Puan başına ekstra hasar %25'ten %13'e düşürüldü." }
+                                ]
+                            },
+                            {
+                                title: "Savaş Çekici (Warhammer)",
+                                icon: "fas fa-hammer",
+                                devNote: "Savaş Çekici'nin son değişikliklerden sonra çok daha sağlıklı bir durumda olduğuna inansak da, daha popüler sınıflarla gerçekten rekabet edebilmesi için ekstra bir itici güce ihtiyacı vardı. Bu güçlendirmelerle, ona bir adım daha ileri gitmesi için gereken araçları veriyoruz.",
+                                changes: [
+                                    { name: "Yıkıcı (Demolisher):", detail: "Kavrama (Grasp): CD 8s'ye düşürüldü, 2 saniyeliğine %50 yavaşlatma uygular, İsabet alanı (Hitbox) artırıldı. Yargı (Judgement): Hasar %180 olarak ayarlandı. Çelik Girdap (Steel Vortex): CD 6s'ye düşürüldü, Temel değer %40 artırıldı, Artık PvE'de %50 artırılmış hasar veriyor." },
+                                    { name: "Kavgacı (Brawler):", detail: "Taş Arena (Stone Arena): CD 40s'ye düşürüldü." }
+                                ]
+                            },
+                            {
+                                title: "Arbalet (Crossbow)",
+                                icon: "fas fa-crosshairs",
+                                devNote: "Arbalet Avcı (Hunter) yetenek ağacı, oyunun ilk günlerinden beri metada kendine bir yer bulmakta zorlandı. Bu değişikliklerle kimliğini güçlendirmeyi ve daha popüler sınıflar ve dizilimlerle yan yana durmasına yardımcı olmayı hedefliyoruz.",
+                                changes: [
+                                    { name: "Avcı (Hunter) Temel:", detail: "Otomatik saldırı hasarı %10 düşürüldü. Avcı İçgüdüsü (Hunter Instinct): Süre 3s → 5s." },
+                                    { name: "Avcı Yetenekleri:", detail: "Aşırı Yükleme (Overkill): CD 12s, Saldırı Hızı %20, Hareket Hızı %15 (seviye başına %0.35). Çoklu Ok (Multi-Shot): Temel Hasar %60 → %95, Hareket Hızı %20 → %35, Hasar/Puan %2 → %3. Hızlı Adım (Quick Step): Başlangıç Hasarı %50 → %65. Ok Yağmuru (Bolt Hall): Hasar %160 → %130, Hareket Hızı Düşüşü %40 → %70, Fiziksel Savunma Düşüşü %20 → %25. Kıyamet Yaylımı (Doom Barrage): Hasar %200 → %275, CD 70s → 60s. Hız Arınması (Cleanse Speed): Temel %20, Ölçeklenme %2 → %1.5." }
+                                ]
+                            },
+                            {
+                                title: "Çift Balta (Dual Axes)",
+                                icon: "fas fa-fist-raised",
+                                devNote: "Çift Balta şu anda Avrupa'da (EU) son derece güçlü, Kuzey Amerika'da (NA) ise son derece zayıf görülüyor. Değerlendirmeye devam etmeyi planlıyoruz.",
+                                changes: [
+                                    { name: "Yetenekler:", detail: "Öfke Patlaması (Rage Burst): Patlama alanı (AoE) %50 artırıldı, CD 2s artırıldı. Balta Fırlatma (Axe Throw): Fırlatma hızı %50 artırıldı. Berserk: CD 22s'ye çıkarıldı, Süre 7s → 5s, Hareket Hızı %50 → %40. Savaş Kükremesi (Battle Roar): Kalkan %10'dan %5'e düşürüldü." },
+                                    { name: "Pasif:", detail: "Maksimum yük (stack) sayısı 50'den 35'e düşürüldü." }
+                                ]
+                            },
+                            {
+                                title: "Mızrak (Spear)",
+                                icon: "fas fa-bolt",
+                                devNote: "Mızrak Ustası (Lance Master) yetenek ağacı, Lejyoner (Legionnaire) yetenek ağacına kıyasla düşük performans gösteriyordu. Bu nedenle onu metaya daha iyi entegre etmek için çeşitli değişiklikler getiriyoruz. Lejyoner yetenek ağacı, aşırı sersemletme zincirleri hakkında geri bildirim aldı. Savaş akıcılığını artırmak için sersemletme süresi biraz düşürülüyor.",
+                                changes: [
+                                    { name: "Mızrak Ustası:", detail: "Kural (Rule): Temel hasar %200 → %250. Mızrak Düşüşü (Spearfall): Temel hasar %200 → %250. Serap (Mirage): Temel hasar %200 → %230. Yüzleşme (Face-Off): Temel hasar %200 → %250." },
+                                    { name: "Lejyoner:", detail: "Acımasız Dalış (Ruthless Dive): CC süresi 2s'den 1.25s'ye düşürüldü." }
+                                ]
+                            },
+                            {
+                                title: "Hançer (Daggers)",
+                                icon: "fas fa-khanda",
+                                devNote: "Testlerimizin ardından, Hançer hasarının amaçlanandan biraz daha yüksek olduğu tespit edildi. Sonuç olarak, dengeyi sağlamak için bu ayarlama yapıldı.",
+                                changes: [
+                                    { name: "Zehir Patlaması (Venom Burst):", detail: "Seviye başına hasar %6'dan %5'e düşürüldü." }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        sectionTitle: "Genel Değişiklikler",
+                        icon: "fas fa-list-ul",
+                        listInfo: [
+                            { title: "Düşme Animasyonu", desc: "Düşme animasyonu (CC etkisi) kısaltıldı ve hızlandırıldı." },
+                            { title: "Trio Arena", desc: "3v3 Trio Arena sırasında artık ekipman değiştirilemez." },
+                            { title: "PvP Parşömenleri", desc: "PVP savunma parşömeni (scroll) kaldırıldı. Oyuncular, envanterlerindeki mevcut parşömenlere sağ tıklayarak iade tutarını alabilirler." },
+                            { title: "Görev Panosu", desc: "Kasaba görevleri artık Tera Parçacıkları (Tera Fragments) ödülü veriyor. Daha fazla görev ayarlaması ve yeni görevler yakında eklenecek." },
+                            { title: "EXP Parşömeni", desc: "Pelthera heykelinden alınan Karakter EXP Parşömeni fiyatı %35 düşürüldü (1.500.000 1/saat)." },
+                            { title: "Kalkan Sınırı", desc: "Kalkan maksimum değeri, maksimum HP'nin %50'si ile sınırlandırıldı." },
+                            { title: "Yerelleştirme", desc: "Bazı çeviri hataları düzeltildi." }
+                        ]
+                    },
+                    {
+                        sectionTitle: "Kapanış Notları",
+                        icon: "fas fa-bullhorn",
+                        intro: "Bu, genel oyun deneyimini iyileştirmeye yönelik süregelen çabalarımızın yalnızca bir adımıdır. İleriye dönük olarak sınıf performansını, oyun dengesini ve oyuncu geri bildirimlerini yakından izlemeye devam edeceğiz. Bunu yaparken sadece oyunun ihtiyaçlarını karşılayan değil, aynı zamanda topluluğumuzun beklentilerini ve isteklerini de yansıtan ayarlamalar yapacağız.<br><br>Quinfall'ın oyuncuların gerçekten vakit geçirmekten keyif alabileceği bir oyun olmasını istiyoruz ve gelecekteki güncellemeler; oyunu daha güçlü iyileştirmeler, daha sağlıklı denge değişiklikleri ve daha keyifli oynanış deneyimleriyle bu yönde zorlamaya devam edecek.<br><br>Bazı alanlar hala daha fazla iyileştirmeye ihtiyaç duyabilir ve biz önümüzdeki güncellemelerde bu çalışmaya devam etmeye tamamen kararlıyız. Oyun için geri bildiriminiz, desteğiniz ve tutkunuz bu değişiklikleri şekillendirmede büyük rol oynamaktadır. Bu yolculuk boyunca bizi desteklemeye devam ettiğiniz için içtenlikle teşekkür ederiz.<br><br>Gelecekte size çok daha iyi yamalar ve iyileştirmeler getirmek için sıkı çalışmaya devam edeceğiz."
+                    }
+                ]
+            }
+        }
+    },
+    {
         id: '17.05.2026',
         versionBadge: '17.05.2026 Hotfix ve Dengelemeler',
         date: '17 May 2026',
