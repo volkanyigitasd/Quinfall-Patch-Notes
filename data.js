@@ -1,5 +1,204 @@
 const patchList = [
     {
+        id: '0.30-hotfix',
+        versionBadge: 'v1.0.0.30 Hotfix',
+        date: '25 May 2026',
+        data: {
+            en: {
+                title: "v1.0.0.30 Hotfix",
+                intro: "The following adjustments have been made in this hotfix to address weapon balance, equipment scaling, and early to mid-game PvE progression.",
+                ui: {
+                    devNoteTitle: "Dev Note",
+                    devCommentaryTitle: "Developer Commentary"
+                },
+                sections: [
+                    {
+                        sectionTitle: "Weapon & Combat Balance",
+                        icon: "fas fa-khanda",
+                        blocks: [
+                            {
+                                title: "Weapon Critical Multipliers",
+                                icon: "fas fa-bolt",
+                                devNote: "After reviewing their performance, we feel they are currently a bit too strong compared to the rest of the weapon pool. This change is aimed at bringing them back into a healthier balance range without removing their identity or impact in combat.",
+                                changes: [
+                                    { name: "Dagger:", detail: "Base critical multiplier adjusted to 1.33." },
+                                    { name: "Crossbow:", detail: "Base critical multiplier adjusted to 1.33." },
+                                    { name: "Bow:", detail: "Base critical multiplier adjusted to 1.28." }
+                                ]
+                            },
+                            {
+                                title: "Life Staff",
+                                icon: "fas fa-heart",
+                                devNote: "This adjustment is intended to improve sustain and overall usability, especially in longer engagements, without pushing the weapon outside of its intended support-focused role.",
+                                changes: [
+                                    { name: "Mana:", detail: "Life Staff mana value increased by 15%." }
+                                ]
+                            },
+                            {
+                                title: "Frenzy Skill Update",
+                                icon: "fas fa-fire",
+                                devNote: "This update is designed to reduce the defensive trade-off pressure on players while maintaining the skill's strong offensive identity in combat.",
+                                changes: [
+                                    { name: "Frenzy:", detail: "Now grants +10% AP. DP reduction on activation adjusted from 20% → 15%." }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        sectionTitle: "Equipment & Armor Adjustments",
+                        icon: "fas fa-shield-alt",
+                        blocks: [
+                            {
+                                title: "Armor Values",
+                                icon: "fas fa-tshirt",
+                                devNote: "We are making a small adjustment to armor values. The goal here is to reinforce clear identity differences between armor types while ensuring survivability scaling remains consistent and balanced across different builds.",
+                                changes: [
+                                    { name: "Light Armor:", detail: "Now grants +5% HP bonus." },
+                                    { name: "Heavy Armor:", detail: "Now provides +10% HP bonus." }
+                                ]
+                            },
+                            {
+                                title: "Talismans",
+                                icon: "fas fa-gem",
+                                devNote: "We found that separating AP bonuses into physical and magical damage was creating unnecessary complexity and limiting build diversity for players who wanted to invest in alternative stats. For this reason, AP bonuses from Talismans will now affect both physical and magical damage types. This change is intended to simplify stat choices and make gearing more flexible and meaningful across different builds.",
+                                changes: [
+                                    { name: "AP Bonuses:", detail: "Now affect both physical and magical damage types." }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        sectionTitle: "PvE & Systems Progression",
+                        icon: "fas fa-chart-line",
+                        blocks: [
+                            {
+                                title: "PvE & Creature Balancing",
+                                icon: "fas fa-dragon",
+                                devNote: "After reviewing recent changes, we noticed early-game players are struggling more than intended when fighting basic monsters, making progression feel slower and more punishing than expected. These adjustments are aimed at smoothing early and mid-game progression pacing and reducing unnecessary friction in PvE combat, while keeping the intended challenge intact.",
+                                changes: [
+                                    { name: "Pre-level 100:", detail: "Creature HP and damage reduced by 50% for pre-level 100 content." },
+                                    { name: "Level 100:", detail: "Creature HP and damage reduced by 10% for level 100 content." }
+                                ]
+                            },
+                            {
+                                title: "Regeneration Scaling",
+                                icon: "fas fa-heartbeat",
+                                devNote: "After reviewing the most recent changes, we’ve come to the conclusion that HP and MP scaling have become weaker than intended, making survivability and sustain feel lower than our target. Regeneration values now scale based on maximum HP/MP, moving to a percentage-based scaling model for more consistent performance across builds.",
+                                changes: [
+                                    { name: "Regeneration:", detail: "Regeneration values are now scaling based on maximum HP/MP (percentage-based scaling)." }
+                                ]
+                            },
+                            {
+                                title: "EXP Boosts",
+                                icon: "fas fa-level-up-alt",
+                                devNote: "A boost has been applied to all players to improve overall progression flow and help players level their characters and master their weapons more smoothly.",
+                                changes: [
+                                    { name: "Boost:", detail: "A 50% EXP boost + weapon XP boost has been applied to all players." }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            tr: {
+                title: "v1.0.0.30 Hotfix",
+                intro: "Bu ara yamada silah dengesini, ekipman ölçeklemesini ve oyunun başından ortasına kadar olan PvE ilerlemesini ele almak için aşağıdaki ayarlamalar yapılmıştır.",
+                ui: {
+                    devNoteTitle: "Geliştirici Notu",
+                    devCommentaryTitle: "Geliştiricinin Yorumu"
+                },
+                sections: [
+                    {
+                        sectionTitle: "Silah ve Savaş Dengelemeleri",
+                        icon: "fas fa-khanda",
+                        blocks: [
+                            {
+                                title: "Silah Kritik Çarpanları",
+                                icon: "fas fa-bolt",
+                                devNote: "Performanslarını inceledikten sonra, diğer silah havuzuna kıyasla şu anda biraz fazla güçlü olduklarını hissediyoruz. Bu değişiklik, kimliklerini veya savaştaki etkilerini ortadan kaldırmadan onları daha sağlıklı bir denge aralığına geri getirmeyi amaçlamaktadır.",
+                                changes: [
+                                    { name: "Hançer (Dagger):", detail: "Temel kritik çarpanı 1.33'e ayarlandı." },
+                                    { name: "Arbalet (Crossbow):", detail: "Temel kritik çarpanı 1.33'e ayarlandı." },
+                                    { name: "Yay (Bow):", detail: "Temel kritik çarpanı 1.28'e ayarlandı." }
+                                ]
+                            },
+                            {
+                                title: "Yaşam Asası (Life Staff)",
+                                icon: "fas fa-heart",
+                                devNote: "Bu ayarlama, özellikle uzun çatışmalarda silahı hedeflenen destek odaklı rolünün dışına itmeden sürdürülebilirliği ve genel kullanılabilirliği artırmayı amaçlamaktadır.",
+                                changes: [
+                                    { name: "Mana:", detail: "Yaşam Asası mana değeri %15 artırıldı." }
+                                ]
+                            },
+                            {
+                                title: "Cinnet (Frenzy) Yetenek Güncellemesi",
+                                icon: "fas fa-fire",
+                                devNote: "Bu güncelleme, yeteneğin savaştaki güçlü saldırgan kimliğini korurken, oyuncular üzerindeki savunma fedakarlığı baskısını azaltmak için tasarlandı.",
+                                changes: [
+                                    { name: "Cinnet (Frenzy):", detail: "Artık +%10 AP veriyor. Etkinleştirildiğindeki DP (Savunma) düşüşü %20'den %15'e ayarlandı." }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        sectionTitle: "Ekipman ve Zırh Ayarlamaları",
+                        icon: "fas fa-shield-alt",
+                        blocks: [
+                            {
+                                title: "Zırh Değerleri",
+                                icon: "fas fa-tshirt",
+                                devNote: "Zırh değerlerinde küçük bir ayarlama yapıyoruz. Buradaki amaç, farklı dizilimler (build) arasında hayatta kalma ölçeklemesinin tutarlı ve dengeli kalmasını sağlarken, zırh türleri arasındaki net kimlik farklılıklarını güçlendirmektir.",
+                                changes: [
+                                    { name: "Hafif Zırh (Light):", detail: "Artık +%5 HP bonusu veriyor." },
+                                    { name: "Ağır Zırh (Heavy):", detail: "Artık +%10 HP bonusu veriyor." }
+                                ]
+                            },
+                            {
+                                title: "Tılsımlar (Talismans)",
+                                icon: "fas fa-gem",
+                                devNote: "AP bonuslarını fiziksel ve büyü hasarı olarak ayırmanın gereksiz bir karmaşıklık yarattığını ve alternatif istatistiklere yatırım yapmak isteyen oyuncular için dizilim çeşitliliğini sınırladığını gördük. Bu nedenle, Tılsımlardan gelen AP bonusları artık hem fiziksel hem de büyü hasarı türlerini etkileyecek. Bu değişiklik, stat seçimlerini basitleştirmeyi ve ekipman dizilimini farklı yapılar arasında daha esnek ve anlamlı hale getirmeyi amaçlamaktadır.",
+                                changes: [
+                                    { name: "AP Bonusları:", detail: "Artık hem fiziksel hem de büyü hasarı türlerini etkiliyor." }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        sectionTitle: "PvE ve Sistem İlerlemesi",
+                        icon: "fas fa-chart-line",
+                        blocks: [
+                            {
+                                title: "PvE ve Yaratık Dengelemeleri",
+                                icon: "fas fa-dragon",
+                                devNote: "Son değişiklikleri inceledikten sonra, erken aşamadaki oyuncuların temel canavarlarla savaşırken hedeflenenden daha fazla zorlandıklarını fark ettik. Bu durum ilerlemenin beklenenden daha yavaş ve cezalandırıcı hissedilmesine neden oluyordu. Bu ayarlamalar, hedeflenen zorluğu korurken erken ve orta oyun ilerleme hızını yumuşatmayı ve PvE savaşındaki gereksiz sürtüşmeyi azaltmayı amaçlamaktadır.",
+                                changes: [
+                                    { name: "Seviye 100 Öncesi:", detail: "Seviye 100 öncesi içerikler için yaratık HP'si ve hasarı %50 azaltıldı." },
+                                    { name: "Seviye 100:", detail: "Seviye 100 içerikleri için yaratık HP'si ve hasarı %10 azaltıldı." }
+                                ]
+                            },
+                            {
+                                title: "Yenilenme (Regeneration) Ölçeklemesi",
+                                icon: "fas fa-heartbeat",
+                                devNote: "En son değişiklikleri inceledikten sonra, HP ve MP ölçeklemesinin amaçlanandan daha zayıf hale geldiği ve hayatta kalma/sürdürülebilirliğin hedefimizden daha düşük hissettirdiği sonucuna vardık. Yenilenme değerleri artık dizilimler arasında daha tutarlı bir performans için yüzdesel ölçekleme modeline geçerek maksimum HP/MP'ye dayalı olarak ölçekleniyor.",
+                                changes: [
+                                    { name: "Yenilenme:", detail: "Yenilenme değerleri artık maksimum HP/MP üzerinden ölçeklenmektedir (yüzdesel ölçekleme)." }
+                                ]
+                            },
+                            {
+                                title: "EXP Destekleri (Boosts)",
+                                icon: "fas fa-level-up-alt",
+                                devNote: "Genel ilerleme akışını iyileştirmek, oyuncuların karakterlerini seviye atlatmalarına ve silahlarında daha rahat ustalaşmalarına yardımcı olmak için tüm oyunculara bir takviye uygulandı.",
+                                changes: [
+                                    { name: "Takviye (Boost):", detail: "Tüm oyunculara %50 EXP takviyesi + silah XP takviyesi uygulandı." }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    {
         id: '0.29',
         versionBadge: 'v1.0.0.29',
         date: '24 May 2026',
