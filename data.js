@@ -1,5 +1,76 @@
 const patchList = [
     {
+        id: '0.31-hotfix',
+        versionBadge: 'v1.0.0.31 Hotfix',
+        date: '29 May 2026',
+        data: {
+            en: {
+                title: "v1.0.0.31 Hotfix",
+                intro: "The following adjustments have been made in this hotfix to address character experience requirements and regeneration power stones balance.",
+                ui: {
+                    devNoteTitle: "Dev Note",
+                    devCommentaryTitle: "Developer Commentary"
+                },
+                sections: [
+                    {
+                        sectionTitle: "Progression & Balance",
+                        icon: "fas fa-cogs",
+                        blocks: [
+                            {
+                                title: "Character Experience",
+                                icon: "fas fa-level-up-alt",
+                                devNote: "We’ve heard your feedback and reviewed the current leveling pace across all stages of progression. The journey to higher levels has been taking longer than intended, especially for players trying to catch up or experience more of the game’s core content.",
+                                changes: [
+                                    { name: "EXP Requirement:", detail: "The EXP requirement for characters has been halved for all levels." }
+                                ]
+                            },
+                            {
+                                title: "HP Regen and MP Regen",
+                                icon: "fas fa-heartbeat",
+                                devNote: "After reviewing combat performance and player data, we found that HP Regen and MP Regen Power Stones were providing significantly more sustain than intended. To bring these Power Stones closer to their intended balance, their effects have been reduced by 50%. Our goal with this change is to keep regeneration valuable, while preventing it from creating situations where sustain becomes too difficult to overcome.",
+                                changes: [
+                                    { name: "Power Stones:", detail: "The effects of HP Regen and MP Regen Power Stones have been halved." }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            tr: {
+                title: "v1.0.0.31 Hotfix",
+                intro: "Bu ara yamada karakter tecrübe gereksinimleri ve yenilenme güç taşları dengesini ele almak için aşağıdaki ayarlamalar yapılmıştır.",
+                ui: {
+                    devNoteTitle: "Geliştirici Notu",
+                    devCommentaryTitle: "Geliştiricinin Yorumu"
+                },
+                sections: [
+                    {
+                        sectionTitle: "İlerleme ve Dengelemeler",
+                        icon: "fas fa-cogs",
+                        blocks: [
+                            {
+                                title: "Karakter Tecrübesi (Experience)",
+                                icon: "fas fa-level-up-alt",
+                                devNote: "Geri bildirimlerinizi duyduk ve ilerlemenin tüm aşamalarındaki mevcut seviye atlama hızını gözden geçirdik. Daha yüksek seviyelere ulaşma yolculuğu, özellikle arayı kapatmaya veya oyunun temel içeriklerini daha fazla deneyimlemeye çalışan oyuncular için hedeflenenden daha uzun sürüyordu.",
+                                changes: [
+                                    { name: "EXP Gereksinimi:", detail: "Karakterler için EXP gereksinimi tüm seviyeler için yarı yarıya azaltıldı." }
+                                ]
+                            },
+                            {
+                                title: "HP ve MP Yenilenmesi",
+                                icon: "fas fa-heartbeat",
+                                devNote: "Savaş performansını ve oyuncu verilerini inceledikten sonra, HP Yenilenmesi ve MP Yenilenmesi Güç Taşlarının (Power Stones) hedeflenenden önemli ölçüde daha fazla sürdürülebilirlik sağladığını gördük. Bu Güç Taşlarını hedeflenen dengeye daha da yaklaştırmak için etkileri %50 oranında azaltıldı. Bu değişiklikle amacımız, yenilenmenin değerli kalmasını sağlarken, sürdürülebilirliğin üstesinden gelinemeyecek kadar zorlaşmasına neden olan durumlar yaratmasını engellemektir.",
+                                changes: [
+                                    { name: "Güç Taşları (Power Stones):", detail: "HP Yenilenmesi ve MP Yenilenmesi Güç Taşlarının etkileri yarı yarıya azaltıldı." }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    {
         id: '0.30-hotfix',
         versionBadge: 'v1.0.0.30 Hotfix',
         date: '25 May 2026',
