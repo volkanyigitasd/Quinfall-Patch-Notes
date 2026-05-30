@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quinfall - Bilinmesi Gerekenler</title>
+    <!-- Modern Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .grade-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .grade-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .grade-card {
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 12px;
+            padding: 2rem;
+            border-top: 4px solid;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .grade-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .grade-card.purple {
+            border-color: #a855f7;
+            background: linear-gradient(180deg, rgba(168, 85, 247, 0.1) 0%, rgba(15, 23, 42, 0) 100%);
+        }
+
+        .grade-card.legendary {
+            border-color: #eab308;
+            background: linear-gradient(180deg, rgba(234, 179, 8, 0.1) 0%, rgba(15, 23, 42, 0) 100%);
+        }
+
+        .grade-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .grade-card.purple .grade-title {
+            color: #a855f7;
+        }
+
+        .grade-card.legendary .grade-title {
+            color: #eab308;
+        }
+
+        .upgrade-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .upgrade-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.95rem;
+        }
+
+        .upgrade-item:last-child {
+            border-bottom: none;
+        }
+
+        .upgrade-level {
+            font-weight: 600;
+            color: #f8fafc;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .upgrade-level .plus {
+            color: #38bdf8;
+        }
+
+        .upgrade-cost {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #cbd5e1;
+            font-family: 'Inter', monospace;
+        }
+
+        .upgrade-cost img {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .upgrade-cost span {
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+
+        .chance-note {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            font-style: italic;
+            margin-left: 5px;
+        }
+
+        .image-showcase {
+            margin: 3rem 0;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .image-showcase img {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid #eab308;
+        }
+        
+        .image-showcase p {
+            margin-top: 1rem;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Premium Background Effects -->
+    <div class="background-effects">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
+        <div class="noise-overlay"></div>
+    </div>
+
+    <!-- Top Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-q">Q</span>
+                <div class="logo-text">
+                    <h1>QUINFALL</h1>
+                    <span class="subtitle" id="nav-subtitle" data-tr="Yardım Merkezi" data-en="Help Center">Help Center</span>
+                </div>
+            </div>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link" data-tr="Yama Notları" data-en="Patch Notes">Patch Notes</a>
+                <a href="fps.html" class="nav-link" data-tr="FPS Çözümleri" data-en="FPS Solutions">FPS Solutions</a>
+                <a href="build.html" class="nav-link" data-tr="Build Sistemi" data-en="Build System">Build System</a>
+                <a href="info.html" class="nav-link active" data-tr="Bilinmesi Gerekenler" data-en="Things to Know">Bilinmesi Gerekenler</a>
+            </div>
+
+            <div class="lang-selector">
+                <button class="lang-btn active" data-lang="tr">Türkçe</button>
+                <button class="lang-btn" data-lang="en">English</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container" style="max-width: 1000px; margin: 3rem auto;">
+        <div class="patch-container">
+            <!-- Header Section -->
+            <div class="patch-hero" style="padding: 4rem 3rem 3rem;">
+                <div class="version-badge" data-tr="Rehber" data-en="Guide">Rehber</div>
+                <h1 class="patch-title" data-tr="Bilinmesi Gerekenler" data-en="Things to Know">Bilinmesi Gerekenler</h1>
+                <p class="patch-date" data-tr="Oyun içi faydalı bilgiler ve oranlar" data-en="Useful in-game information and rates">Oyun içi faydalı bilgiler ve oranlar</p>
+            </div>
+
+            <!-- Content renders here -->
+            <div class="content-body">
+                
+                <div class="intro-text" data-tr="Bu bölümde ekipman yükseltme (upgrade) maliyetleri ve oyun içi kritik bilgilere ulaşabilirsiniz." data-en="In this section, you can find equipment upgrade costs and critical in-game information.">
+                    Bu bölümde ekipman yükseltme (upgrade) maliyetleri ve oyun içi kritik bilgilere ulaşabilirsiniz.
+                </div>
+
+                <h2 class="section-title"><i class="fas fa-hammer"></i> <span data-tr="Geliştirme Maliyetleri (Ancient Ore)" data-en="Enhancement Costs (Ancient Ore)">Geliştirme Maliyetleri (Ancient Ore)</span></h2>
+                
+                <p style="color: #94a3b8; margin-bottom: 2rem;" data-tr="Ekipmanlarınızı daha yüksek seviyelere çıkarmak için gereken Antik Cevher (Ancient Ore) miktarları aşağıda listelenmiştir." data-en="The amounts of Ancient Ore required to upgrade your equipment to higher levels are listed below.">
+                    Ekipmanlarınızı daha yüksek seviyelere çıkarmak için gereken Antik Cevher (Ancient Ore) miktarları aşağıda listelenmiştir.
+                </p>
+
+                <!-- Image Showcase -->
+                <div class="image-showcase">
+                    <!-- Note for the user to add the image -->
+                    <img src="ancient_ore.png" alt="Antik Cevher" onerror="this.src='https://cdn-icons-png.flaticon.com/512/10434/10434220.png'; this.style.opacity='0.2';">
+                    <p data-tr="Antik Cevher (Ancient Ore)" data-en="Ancient Ore">Antik Cevher (Ancient Ore)</p>
+                </div>
+
+                <div class="grade-container">
+                    <!-- Purple Grade -->
+                    <div class="grade-card purple">
+                        <div class="grade-title"><i class="fas fa-gem"></i> EPIC Grade</div>
+                        <ul class="upgrade-list">
+                            <li class="upgrade-item">
+                                <div class="upgrade-level"><span class="plus">+</span>4</div>
+                                <div class="upgrade-cost"><span>1</span> Ancient Ore <span class="chance-note" data-tr="(1/3 Şans)" data-en="(1/3 Chance)">(1/3 Şans)</span></div>
+                            </li>
+                            <li class="upgrade-item">
+                                <div class="upgrade-level"><span class="plus">+</span>5</div>
+                                <div class="upgrade-cost"><span>2</span> Ancient Ore</div>
+                            </li>
+                            <li class="upgrade-item">
+                                <div class="upgrade-level"><span class="plus">+</span>6</div>
+                                <div class="upgrade-cost"><span>6</span> Ancient Ore</div>
+                            </li>
+                            <li class="upgrade-item">
+                                <div class="upgrade-level"><span class="plus">+</span>7</div>
+                                <div class="upgrade-cost"><span>30</span> Ancient Ore</div>
+                            </li>
+                            <li class="upgrade-item">
+                                <div class="upgrade-level"><span class="plus">+</span>8</div>
+                                <div class="upgrade-cost"><span>300</span> Ancient Ore</div>
+                            </li>
+                            <li class="upgrade-item">
+                                <div class="upgrade-level"><span class="plus">+</span>9</div>
+                                <div class="upgrade-cost"><span>1500</span> Ancient Ore</div>
+                            </li>
+                            <li class="upgrade-item">
+                                <div class="upgrade-level"><span class="plus">+</span>10</div>
+                                <div class="upgrade-cost"><span>3000</span> Ancient Ore</div>
+                            </li>
+                            <li class="upgrade-item">
+                                <div class="upgrade-level"><span class="plus">+</span>11</div>
+                                <div class="upgrade-cost"><span>5000</span> Ancient Ore</div>
+                            </li>
+                            <li class="upgrade-item">
+                                <div class="upgrade-level"><span class="plus">+</span>12</div>
+                                <div class="upgrade-cost"><span>7500</span> Ancient Ore</div>
+                            </li>
+                            <li class="upgrade-item">
+                                <div class="upgrade-level"><span class="plus">+</span>13</div>
+                                <div class="upgrade-cost"><span>11000</span> Ancient Ore</div>
+                            </li>
+                            <li class="upgrade-item">
+                                <div class="upgrade-level"><span class="plus">+</span>14</div>
+                                <div class="upgrade-cost"><span>14000</span> Ancient Ore</div>
+                            </li>
+                            <li class="upgrade-item">
+                                <div class="upgrade-level"><span class="plus">+</span>15</div>
+                                <div class="upgrade-cost"><span>17500</span> Ancient Ore</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Legendary Grade -->
+                    <div class="grade-card legendary">
+                        <div class="grade-title"><i class="fas fa-crown"></i> Legendary Grade</div>
+                        <ul class="upgrade-list">
+                            <li class="upgrade-item">
+                                <div class="upgrade-level"><span class="plus">+</span>4</div>
+                                <div class="upgrade-cost"><span>2</span> Ancient Ore</div>
+                            </li>
+                            <li class="upgrade-item">
+                                <div class="upgrade-level"><span class="plus">+</span>5</div>
+                                <div class="upgrade-cost"><span>4</span> Ancient Ore</div>
+                            </li>
+                            <li class="upgrade-item">
+                                <div class="upgrade-level"><span class="plus">+</span>6</div>
+                                <div class="upgrade-cost"><span>12</span> Ancient Ore</div>
+                            </li>
+                            <li class="upgrade-item">
+                                <div class="upgrade-level"><span class="plus">+</span>7</div>
+                                <div class="upgrade-cost"><span>60</span> Ancient Ore</div>
+                            </li>
+                            <li class="upgrade-item">
+                                <div class="upgrade-level"><span class="plus">+</span>8</div>
+                                <div class="upgrade-cost"><span>600</span> Ancient Ore</div>
+                            </li>
+                            <li class="upgrade-item">
+                                <div class="upgrade-level"><span class="plus">+</span>9</div>
+                                <div class="upgrade-cost"><span>3000</span> Ancient Ore</div>
+                            </li>
+                            <li class="upgrade-item">
+                                <div class="upgrade-level"><span class="plus">+</span>10</div>
+                                <div class="upgrade-cost"><span>6000</span> Ancient Ore</div>
+                            </li>
+                            <li class="upgrade-item">
+                                <div class="upgrade-level"><span class="plus">+</span>11</div>
+                                <div class="upgrade-cost"><span>10000</span> Ancient Ore</div>
+                            </li>
+                            <li class="upgrade-item">
+                                <div class="upgrade-level"><span class="plus">+</span>12</div>
+                                <div class="upgrade-cost"><span>15000</span> Ancient Ore</div>
+                            </li>
+                            <li class="upgrade-item">
+                                <div class="upgrade-level"><span class="plus">+</span>13</div>
+                                <div class="upgrade-cost"><span>22000</span> Ancient Ore</div>
+                            </li>
+                            <li class="upgrade-item">
+                                <div class="upgrade-level"><span class="plus">+</span>14</div>
+                                <div class="upgrade-cost"><span>28000</span> Ancient Ore</div>
+                            </li>
+                            <li class="upgrade-item">
+                                <div class="upgrade-level"><span class="plus">+</span>15</div>
+                                <div class="upgrade-cost"><span>35000</span> Ancient Ore</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Quinfall. <span id="footer-rights" data-tr="Tüm hakları saklıdır." data-en="All rights reserved.">Tüm hakları saklıdır.</span></p>
+        </div>
+    </footer>
+
+    <!-- Script for language toggle on static page -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const langBtns = document.querySelectorAll('.lang-btn');
+            
+            // State
+            let currentLang = localStorage.getItem('quinfall_lang') || 'tr';
+            
+            // Initialize
+            setLanguage(currentLang);
+
+            // Event Listeners for language buttons
+            langBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const selectedLang = e.target.getAttribute('data-lang');
+                    if (selectedLang !== currentLang) {
+                        setLanguage(selectedLang);
+                    }
+                });
+            });
+
+            function setLanguage(lang) {
+                currentLang = lang;
+                localStorage.setItem('quinfall_lang', lang);
+
+                // Update active button state
+                langBtns.forEach(btn => {
+                    if (btn.getAttribute('data-lang') === lang) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+
+                // Update text contents
+                const translatableElements = document.querySelectorAll('[data-tr]');
+                translatableElements.forEach(el => {
+                    if (lang === 'tr') {
+                        el.textContent = el.getAttribute('data-tr');
+                    } else if (lang === 'en') {
+                        el.textContent = el.getAttribute('data-en');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
